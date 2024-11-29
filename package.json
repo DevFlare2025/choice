@@ -3,7 +3,13 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "preinstall": "npx only-allow pnpm",
+        "blade-format": "blade-formatter --write \"resources/**/*.blade.php\"",
+        "blade-lint": "blade-formatter \"resources/**/*.blade.php\" -c -d",
+        "prettier-check": "prettier . --check",
+        "prettier-format": "prettier . --write"
+
     },
     "devDependencies": {
         "@headlessui/react": "^2.0.0",

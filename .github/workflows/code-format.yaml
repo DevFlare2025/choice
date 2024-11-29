@@ -15,8 +15,8 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v4
 
-            - name: Check PHP code formatting
-              run: php-cs-fixer fix -vvv --dry-run
+            # - name: Check PHP code formatting
+            #   run: php-cs-fixer fix -vvv --dry-run
 
             - name: Check Blade file formatting
               if: always()

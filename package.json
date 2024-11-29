@@ -3,7 +3,12 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "preinstall": "npx only-allow pnpm",
+        "blade-format": "blade-formatter --write \"resources/**/*.blade.php\"",
+        "blade-lint": "blade-formatter \"resources/**/*.blade.php\" -c -d",
+        "prettier-check": "prettier . --check",
+        "prettier-format": "prettier . --write"
     },
     "devDependencies": {
         "@headlessui/react": "^2.0.0",
@@ -12,6 +17,7 @@
         "@vitejs/plugin-react": "^4.3.4",
         "autoprefixer": "^10.4.12",
         "axios": "^1.7.4",
+        "blade-formatter": "^1.41.1",
         "concurrently": "^9.0.1",
         "laravel-vite-plugin": "^1.0",
         "postcss": "^8.4.31",
@@ -19,5 +25,11 @@
         "react-dom": "^18.3.1",
         "tailwindcss": "^3.2.1",
         "vite": "^5.0"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.13.5",
+        "@emotion/styled": "^11.13.5",
+        "@mui/icons-material": "^6.1.9",
+        "@mui/material": "^6.1.9"
     }
 }

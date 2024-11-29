@@ -1,44 +1,28 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
-import { useState } from 'react';
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout"
+import { Head } from "@inertiajs/react"
+import { useState } from "react"
+import SubMenu from "../Components/Submenu" // Importa el componente
+import MiCard from "../Components/Card" // Importa el componente
 
 export default function Menu() {
-    const [activeMenu, setActiveMenu] = useState(null);
+    const [activeMenu, setActiveMenu] = useState(null)
 
     const menus = [
+        { name: "Proyecto", subMenus: ["Subproyecto 1", "Subproyecto 2"] },
+        { name: "Comunidad", subMenus: ["Foros", "Grupos"] },
+        { name: "Usuarios", subMenus: ["Listado", "Roles", "Permisos"] },
+        { name: "Ubicación", subMenus: ["Mapa", "Regiones"] },
+        { name: "Configuración", subMenus: ["General", "Aplicación"] },
         {
-            name: 'Proyecto',
-            subMenus: ['Subproyecto 1', 'Subproyecto 2'],
+            name: "Logout",
+            subMenus: ["Profile", "Logout"],
+            action: () => console.log("Cerrando sesión..."),
         },
-        {
-            name: 'Comunidad',
-            subMenus: ['Foros', 'Grupos'],
-        },
-        {
-            name: 'Usuarios',
-            subMenus: ['Listado', 'Roles', 'Permisos'],
-        },
-        {
-            name: 'Ubicación',
-            subMenus: ['Mapa', 'Regiones'],
-        },
-        {
-           name:'Configuracion',
-           subMenus:['Configuracion general','Configuracion de la aplicacion']
-        },
-        {
-            name: 'Logout',
-            subMenus: ['Profile','Logout'],
-            action: () => {
-                // Acción de cerrar sesión
-                console.log('Cerrando sesión...');
-            },
-        },
-    ];
+    ]
 
     const toggleMenu = (menuName) => {
-        setActiveMenu(activeMenu === menuName ? null : menuName);
-    };
+        setActiveMenu(activeMenu === menuName ? null : menuName)
+    }
 
     return (
         <AuthenticatedLayout>
@@ -50,27 +34,29 @@ export default function Menu() {
                     <div className="p-4 text-lg font-bold">Menú</div>
                     <ul>
                         {menus.map((menu) => (
-                            <li key={menu.name} className="border-b border-gray-700">
+                            <li
+                                key={menu.name}
+                                className="border-b border-gray-700">
                                 <button
                                     onClick={() =>
-                                        menu.action ? menu.action() : toggleMenu(menu.name)
+                                        menu.action
+                                            ? menu.action()
+                                            : toggleMenu(menu.name)
                                     }
-                                    className="flex w-full justify-between px-4 py-2 text-left hover:bg-gray-700"
-                                >
+                                    className="flex w-full justify-between px-4 py-2 text-left hover:bg-gray-700">
                                     {menu.name}
                                     {menu.subMenus.length > 0 && (
-                                        <span>{activeMenu === menu.name ? '-' : '+'}</span>
+                                        <span>
+                                            {activeMenu === menu.name
+                                                ? "-"
+                                                : "+"}
+                                        </span>
                                     )}
                                 </button>
-                                {activeMenu === menu.name && (
-                                    <ul className="ml-4 space-y-2 bg-gray-700">
-                                        {menu.subMenus.map((subMenu) => (
-                                            <li key={subMenu} className="px-4 py-2 hover:bg-gray-600">
-                                                {subMenu}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
+                                <SubMenu
+                                    subMenus={menu.subMenus}
+                                    isActive={activeMenu === menu.name}
+                                />
                             </li>
                         ))}
                     </ul>
@@ -78,17 +64,80 @@ export default function Menu() {
 
                 {/* Main Content */}
                 <div className="flex-1 p-6 bg-gray-200">
-                    <div className="text-gray-900">Contenido principal aquí.</div>
-                    <table>
-                        <tr>
-                            <th>cocina</th>
-                            <th>nombre</th>
-                            <th>precio</th>
+                    <div className="text-gray-900 border-gray-700">
+                        Bienvendido a sistema de ONG .
+                    </div>
+                    <p>
+                        Desde el panel puedes gestionar los diferentes modulos,
+                        cualquier duda o problema no dudes en contactar con el
+                        soporte tecnico.
+                    </p>
+                    <MiCard />
 
-                        </tr>
-                    </table>
+                    <div className="flex flex-wrap justify-center mt-4">
+                        <div className="w-1/2 p-2">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Ir al inicio"
+                                onActionClick={() =>
+                                    alert("¡Hiciste clic en el botón!")
+                                }
+                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
+                            />
+                        </div>
+                        <div className="w-1/2 p-2">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Ir al inicio"
+                                onActionClick={() =>
+                                    alert("¡Hiciste clic en el botón!")
+                                }
+                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
+                            />
+                        </div>
+                        <div className="w-1/2 p-2">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Ir al inicio"
+                                onActionClick={() =>
+                                    alert("¡Hiciste clic en el botón!")
+                                }
+                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
+                            />
+                        </div>
+                        <div className="w-1/2 p-2">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Ir al inicio"
+                                onActionClick={() =>
+                                    alert("¡Hiciste clic en el botón!")
+                                }
+                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
+                            />
+                        </div>
+                        <div className="w-1/2 p-2">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Ir al inicio"
+                                onActionClick={() =>
+                                    alert("¡Hiciste clic en el botón!")
+                                }
+                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
+                            />
+                        </div>
+                        <div className="w-1/2 p-2">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Ir al inicio"
+                                onActionClick={() =>
+                                    alert("¡Hiciste clic en el botón!")
+                                }
+                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </AuthenticatedLayout>
-    );
+    )
 }

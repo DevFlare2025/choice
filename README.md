@@ -17,3 +17,5 @@ dependencias
 -   npm install -g pnpm
 -   npm install --save-dev blade-formatter
 -   composer require --dev friendsofphp/php-cs-fixer
+- npm install react-router-dom
+- npm install @mui/material @mui/icons-material @mui/x-date-pickers dayjs

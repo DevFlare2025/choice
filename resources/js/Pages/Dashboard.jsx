@@ -3,9 +3,14 @@ import { Head } from "@inertiajs/react"
 import { useState } from "react"
 import SubMenu from "../Components/Submenu" // Importa el componente
 import MiCard from "../Components/Card" // Importa el componente
+import Welcome from "../Components/Card2"
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function Menu() {
-    const [activeMenu, setActiveMenu] = useState(null)
+    const [activeMenu, setActiveMenu] = useState(null);
+    // const navigate = useNavigate();
 
     const menus = [
         { name: "Proyecto", subMenus: ["Subproyecto 1", "Subproyecto 2"] },
@@ -64,18 +69,62 @@ export default function Menu() {
 
                 {/* Main Content */}
                 <div className="flex-1 p-6 bg-gray-200">
-                    <div className="text-gray-900 border-gray-700">
-                        Bienvendido a sistema de ONG .
-                    </div>
-                    <p>
-                        Desde el panel puedes gestionar los diferentes modulos,
-                        cualquier duda o problema no dudes en contactar con el
-                        soporte tecnico.
-                    </p>
-                    <MiCard />
 
-                    <div className="flex flex-wrap justify-center mt-4">
-                        <div className="w-1/2 p-2">
+                     <Welcome
+                     title="Bienvenidos al Sistema de ...!"
+                     description="En la parte izquierda del panel puede administrar los diferentes menús del sistema,
+                     cualquier consulta puede comunicaser se con el administrador."
+                     />
+                    <div className="flex flex-wrap justify-center m-1">
+                        <div className="w-1/5 p-1">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Contabilidad"
+                                onActionClick={() =>
+                                    alert("¡Hiciste clic en el botón!")
+                                }
+                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
+                            />
+                        </div>
+                        <div className="w-1/5 p-1">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Presupuesto"
+                                onActionClick={() =>
+                                    alert("¡Hiciste clic en el botón!")
+                                }
+                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
+                            />
+                        </div>
+                        <div className="w-1/5 p-1">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Calendario"
+
+                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
+                            />
+                        </div>
+                        <div className="w-1/5 p-1">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Eventos"
+                                onActionClick={() =>
+                                    alert("¡Hiciste clic en el botón!")
+                                }
+                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
+                            />
+                        </div>
+                        <div className="w-1/5 p-1">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Donaciones"
+                                onActionClick={() =>
+                                    alert("¡Hiciste clic en el botón!")
+                                }
+                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
+                            />
+                        </div>
+                        {/* <div className="w-1/5 p-1">
                             <MiCard
                                 description="Descripción de la tarjeta"
                                 actionText="Ir al inicio"
@@ -84,57 +133,7 @@ export default function Menu() {
                                 }
                                 // icon={<HomeIcon />}  // Pasa el ícono como propiedad
                             />
-                        </div>
-                        <div className="w-1/2 p-2">
-                            <MiCard
-                                description="Descripción de la tarjeta"
-                                actionText="Ir al inicio"
-                                onActionClick={() =>
-                                    alert("¡Hiciste clic en el botón!")
-                                }
-                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
-                            />
-                        </div>
-                        <div className="w-1/2 p-2">
-                            <MiCard
-                                description="Descripción de la tarjeta"
-                                actionText="Ir al inicio"
-                                onActionClick={() =>
-                                    alert("¡Hiciste clic en el botón!")
-                                }
-                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
-                            />
-                        </div>
-                        <div className="w-1/2 p-2">
-                            <MiCard
-                                description="Descripción de la tarjeta"
-                                actionText="Ir al inicio"
-                                onActionClick={() =>
-                                    alert("¡Hiciste clic en el botón!")
-                                }
-                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
-                            />
-                        </div>
-                        <div className="w-1/2 p-2">
-                            <MiCard
-                                description="Descripción de la tarjeta"
-                                actionText="Ir al inicio"
-                                onActionClick={() =>
-                                    alert("¡Hiciste clic en el botón!")
-                                }
-                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
-                            />
-                        </div>
-                        <div className="w-1/2 p-2">
-                            <MiCard
-                                description="Descripción de la tarjeta"
-                                actionText="Ir al inicio"
-                                onActionClick={() =>
-                                    alert("¡Hiciste clic en el botón!")
-                                }
-                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
-                            />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

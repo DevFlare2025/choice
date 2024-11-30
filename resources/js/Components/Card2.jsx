@@ -8,7 +8,7 @@ import Button from "@mui/material/Button"
 import { IconButton } from "@mui/material" // Si deseas usar botones de íconos
 import HomeIcon from "@mui/icons-material/Home" // Ejemplo de ícono de Material UI
 
-export default function MiCard({
+export default function Welcome({
     title,
     description,
     actionText,
@@ -16,21 +16,19 @@ export default function MiCard({
     icon,
 }) {
     return (
-        <Box sx={{ maxWidth: 170, margin: "4px auto", marginTop: 2 }}>
+        <Box sx={{ maxWidth: 820, margin: "auto", marginTop: 1 }}>
             <Card variant="outlined">
                 <CardContent>
                     <Typography variant="h5" component="div">
                         {title}
                     </Typography>
-                    <Typography sx={{ mt: 0.1 }} color="text.secondary">
+                    <Typography sx={{ mt: 1.5 }} color="text.secondary">
                         {description}
                     </Typography>
                 </CardContent>
-                <CardActions sx={{ justifyContent: "center" }}>
+                <CardActions>
                     <Button
                         size="small"
-                        variant="contained"
-                        color="primary"
                         onClick={onActionClick}
                         startIcon={icon}>
                         {actionText}

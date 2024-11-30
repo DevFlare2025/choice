@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CalendarController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -29,3 +30,6 @@ Route::get('/home', function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/calendario',[CalendarController::class,'index']);

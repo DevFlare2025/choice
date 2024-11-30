@@ -26,7 +26,7 @@ export default function MiCard({
                         {description}
                     </Typography>
                 </CardContent>
-                <CardActions sx={{justifyContent:"center"}}>
+                <CardActions sx={{ justifyContent: "center" }}>
                     <Button
                         size="small"
                         variant="contained"
@@ -40,5 +40,3 @@ export default function MiCard({
         </Box>
     )
 }
-
-

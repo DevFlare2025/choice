@@ -4,12 +4,10 @@ import { useState } from "react"
 import SubMenu from "../Components/Submenu" // Importa el componente
 import MiCard from "../Components/Card" // Importa el componente
 import Welcome from "../Components/Card2"
-import { useNavigate } from "react-router-dom";
-
-
+import { useNavigate } from "react-router-dom"
 
 export default function Menu() {
-    const [activeMenu, setActiveMenu] = useState(null);
+    const [activeMenu, setActiveMenu] = useState(null)
     // const navigate = useNavigate();
 
     const menus = [
@@ -69,12 +67,11 @@ export default function Menu() {
 
                 {/* Main Content */}
                 <div className="flex-1 p-6 bg-gray-200">
-
-                     <Welcome
-                     title="Bienvenidos al Sistema de ...!"
-                     description="En la parte izquierda del panel puede administrar los diferentes menús del sistema,
+                    <Welcome
+                        title="Bienvenidos al Sistema de ...!"
+                        description="En la parte izquierda del panel puede administrar los diferentes menús del sistema,
                      cualquier consulta puede comunicaser se con el administrador."
-                     />
+                    />
                     <div className="flex flex-wrap justify-center m-1">
                         <div className="w-1/5 p-1">
                             <MiCard

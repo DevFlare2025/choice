@@ -11,8 +11,9 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        //
+        //dd('la funcion del controlador se esta ejecutando');
         return Inertia::render('Calendar/Calendar');
+
     }
 
     /**

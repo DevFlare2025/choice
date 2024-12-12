@@ -1,17 +1,26 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout"
 import { Head } from "@inertiajs/react"
 import { useState } from "react"
-import SubMenu from "../Components/Submenu" // Importa el componente
-import MiCard from "../Components/Card" // Importa el componente
-import Welcome from "../Components/Card2"
+import SubMenu from "../Components/submenu/Submenu" // Importa el componente
+import MiCard from "../Components/card/Card" // Importa el componente
+import Welcome from "../Components/card/Card2"
 import { useNavigate } from "react-router-dom"
 
 export default function Menu() {
     const [activeMenu, setActiveMenu] = useState(null)
+    const [activeComponent, setActiveComponent] = useState("welcome")
+
     // const navigate = useNavigate();
 
+    const toggleMenu = (menuName) => {
+        setActiveMenu(activeMenu === menuName ? null : menuName)
+    }
+
     const menus = [
-        { name: "Proyecto", subMenus: ["Subproyecto 1", "Subproyecto 2"] },
+        {
+            name: "Proyecto",
+            subMenus: ["Subproyecto 1", "Subproyecto 2", "Calendario"],
+        },
         { name: "Comunidad", subMenus: ["Foros", "Grupos"] },
         { name: "Usuarios", subMenus: ["Listado", "Roles", "Permisos"] },
         { name: "Ubicación", subMenus: ["Mapa", "Regiones"] },
@@ -23,8 +32,8 @@ export default function Menu() {
         },
     ]
 
-    const toggleMenu = (menuName) => {
-        setActiveMenu(activeMenu === menuName ? null : menuName)
+    const handleSubmenuClick = (submenuName) => {
+        setActiveComponent(submenuName)
     }
 
     return (
@@ -67,10 +76,11 @@ export default function Menu() {
 
                 {/* Main Content */}
                 <div className="flex-1 p-6 bg-gray-200">
+                    {activeComponent === "welcome" && <Welcome />}
                     <Welcome
-                        title="Bienvenidos al Sistema de ...!"
+                        title="Bienvenidos al Sistema de ..."
                         description="En la parte izquierda del panel puede administrar los diferentes menús del sistema,
-                     cualquier consulta puede comunicaser se con el administrador."
+                      cualquier consulta puede comunicaser se con el administrador."
                     />
                     <div className="flex flex-wrap justify-center m-1">
                         <div className="w-1/5 p-1">
@@ -80,7 +90,6 @@ export default function Menu() {
                                 onActionClick={() =>
                                     alert("¡Hiciste clic en el botón!")
                                 }
-                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
                             />
                         </div>
                         <div className="w-1/5 p-1">
@@ -90,15 +99,12 @@ export default function Menu() {
                                 onActionClick={() =>
                                     alert("¡Hiciste clic en el botón!")
                                 }
-                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
                             />
                         </div>
                         <div className="w-1/5 p-1">
                             <MiCard
                                 description="Descripción de la tarjeta"
                                 actionText="Calendario"
-
-                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
                             />
                         </div>
                         <div className="w-1/5 p-1">
@@ -108,7 +114,6 @@ export default function Menu() {
                                 onActionClick={() =>
                                     alert("¡Hiciste clic en el botón!")
                                 }
-                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
                             />
                         </div>
                         <div className="w-1/5 p-1">
@@ -118,19 +123,8 @@ export default function Menu() {
                                 onActionClick={() =>
                                     alert("¡Hiciste clic en el botón!")
                                 }
-                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
                             />
                         </div>
-                        {/* <div className="w-1/5 p-1">
-                            <MiCard
-                                description="Descripción de la tarjeta"
-                                actionText="Ir al inicio"
-                                onActionClick={() =>
-                                    alert("¡Hiciste clic en el botón!")
-                                }
-                                // icon={<HomeIcon />}  // Pasa el ícono como propiedad
-                            />
-                        </div> */}
                     </div>
                 </div>
             </div>

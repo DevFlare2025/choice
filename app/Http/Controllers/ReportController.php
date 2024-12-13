@@ -1,19 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-use inertia\Inertia;
+
 use Illuminate\Http\Request;
 
-class CalendarController extends Controller
+class ReportController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //dd('la funcion del controlador se esta ejecutando');
-        return Inertia::render('Calendar/Calendar');
-
+        //
     }
 
     /**

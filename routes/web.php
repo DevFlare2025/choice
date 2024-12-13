@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CalendarController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
+// Cargar rutas específicas desde otros archivos
+require_once __DIR__.'/ong/Project.php';
+require_once __DIR__.'/ong/Calendario.php';
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -31,5 +34,10 @@ Route::get('/home', function () {
 
 require __DIR__.'/auth.php';
 
+require_once __DIR__.'/ong/Project.php';
+require_once __DIR__.'/ong/Calendario.php';
+require_once __DIR__.'/ong/Community.php';
 
-Route::get('/calendario',[CalendarController::class,'index']);
+
+
+

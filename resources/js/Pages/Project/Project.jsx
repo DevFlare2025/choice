@@ -1,168 +1,232 @@
-import * as React from "react"
-import Paper from "@mui/material/Paper"
-import Table from "@mui/material/Table"
-import TableBody from "@mui/material/TableBody"
-import TableCell from "@mui/material/TableCell"
-import TableContainer from "@mui/material/TableContainer"
-import TableHead from "@mui/material/TableHead"
-import TablePagination from "@mui/material/TablePagination"
-import TableRow from "@mui/material/TableRow"
-import Button from "@mui/material/Button"
+import React, { useState } from 'react'
+import Modal from '/resources/js/Components/Modal'
+import InputLabel from '/resources/js/Components/InputLabel'
+import PrimaryButton from '/resources/js/Components/PrimaryButton'
+import TextInput from '/resources/js/Components/TextInput'
+import DangerButton from '/resources/js/Components/DangerButton'
+import DialogActions from '@mui/material/DialogActions';
 
 const columns = [
-    { id: "name", label: "Categoria", minWidth: 170 },
-    { id: "code", label: "Nomeclatura", minWidth: 100 },
-    { id: "project", label: "Proyecto", minWidth: 100 },
-    { id: "responsa", label: "Responsable", minWidth: 100 },
-    { id: "community", label: "Comunidad", minWidth: 100 },
-    {
-        id: "population",
-        label: "Presupuesto",
-        minWidth: 100,
-        align: "right",
-        format: (value) => value.toLocaleString("en-US"),
-    },
-    {
-        id: "size",
-        label: "Presupuesto Gastado",
-        minWidth: 100,
-        align: "right",
-        format: (value) => value.toLocaleString("en-US"),
-    },
-    {
-        id: "density",
-        label: "Estado",
-        minWidth: 100,
-        align: "right",
-        format: (value) => value.toFixed(2),
-    },
-    { id: "fechainicio", label: "Fecha de inicio" },
-    { id: "fechafin", label: "Fecha de fin" },
-    { id: "editar", label: "Acción" },
+  { id: 'category', label: 'Categoria', minWidth: 100 },
+  { id: 'nomeclature', label: 'Nomeclatura', minWidth: 100 },
+  { id: 'project', label: 'Proyecto', minWidth: 170 },
+  { id: 'responsible', label: 'Responsable', minWidth: 100 },
+  { id: 'community', label: 'Comunidad', minWidth: 100 },
+  { id: 'status', label: 'Estado', minWidth: 100 },
+  { id: 'budget', label: 'Presupuesto', minWidth: 100 },
+  { id: 'spent_budget', label: 'Presupuesto Gastado', minWidth: 100 },
+  { id: 'startDate', label: 'Fecha de Inicio', minWidth: 100 },
+  { id: 'endDate', label: 'Fecha Finalización', minWidth: 100 },
+  { id: 'action', label: 'Acción', minWidth: 100 }
 ]
 
-function createData(name, code, population, size) {
-    const density = population / size
-    return { name, code, population, size, density }
+function createData(category, nomeclature, project, responsible, community, status, budget, spent_budget, startDate, endDate, action, field1, field2, field3, field4) {
+  return { category, nomeclature, project, responsible, community, status, budget, spent_budget, startDate, endDate, action, field1, field2, field3, field4 }
 }
 
 const rows = [
-    createData("India", "IN", 1324171354, 3287263),
-    createData("China", "CN", 1403500365, 9596961),
-    createData("Italy", "IT", 60483973, 301340),
-    createData("United States", "US", 327167434, 9833520),
-    createData("Canada", "CA", 37602103, 9984670),
-    createData("Australia", "AU", 25475400, 7692024),
-    createData("Germany", "DE", 83019200, 357578),
-    createData("Ireland", "IE", 4857000, 70273),
-    createData("Mexico", "MX", 126577691, 1972550),
-    createData("Japan", "JP", 126317000, 377973),
-    createData("France", "FR", 67022000, 640679),
-    createData("United Kingdom", "GB", 67545757, 242495),
-    createData("Russia", "RU", 146793744, 17098246),
-    createData("Nigeria", "NG", 200962417, 923768),
-    createData("Brazil", "BR", 210147125, 8515767),
+  createData('Categoria 1', 'Nomeclatura 1', 'Proyecto 1', 'Responsable 1', 'Comunidad 1', 'Activo', 10000, 5000, '2024-01-01', '2024-06-01', 'Editar', 'Valor 1', 'Valor 2', 'Valor 3', 'Valor 4'),
+  createData('Categoria 2', 'Nomeclatura 2', 'Proyecto 2', 'Responsable 2', 'Comunidad 2', 'Inactivo', 20000, 15000, '2024-02-01', '2024-07-01', 'Editar', 'Valor 1', 'Valor 2', 'Valor 3', 'Valor 4'),
 ]
 
-export default function ColumnGroupingTable() {
-    const [page, setPage] = React.useState(0)
-    const [rowsPerPage, setRowsPerPage] = React.useState(10)
+export default function Project() {
+  const [openForm, setOpenForm] = useState(false)
+  const [formData, setFormData] = useState({
+    category: '',
+    nomeclature: '',
+    project: '',
+    responsible: '',
+    community: '',
+    status: '',
+    budget: '',
+    spent_budget: '',
+    startDate: '',
+    endDate: '',
+    field1: '',
+    field2: '',
+    field3: '',
+    field4: ''
+  })
 
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage)
+  const handleOpenForm = (rowData = null) => {
+    if (rowData) {
+      setFormData(rowData)
+    } else {
+      setFormData({
+        category: '',
+        nomeclature: '',
+        project: '',
+        responsible: '',
+        community: '',
+        status: '',
+        budget: '',
+        spent_budget: '',
+        startDate: '',
+        endDate: '',
+      })
     }
+    setOpenForm(true);
+  };
 
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(+event.target.value)
-        setPage(0)
-    }
+  const handleCloseForm = () => {
+    setOpenForm(false)
+  }
 
-    return (
-        <Paper sx={{ width: "100%" }}>
-            <TableContainer sx={{ maxHeight: 560 }}>
-                <Table stickyHeader aria-label="sticky table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell align="center" colSpan={10}>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    size="small"
-                                    onClick={() => console.log("Editar")}>
-                                    Registrar
-                                </Button>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    size="small"
-                                    onClick={() => console.log("Editar")}>
-                                    Editar
-                                </Button>
-                                <Button
-                                    variant="contained"
-                                    color="secondary"
-                                    size="small"
-                                    onClick={() => console.log("Eliminar")}
-                                    style={{ marginLeft: "8px" }}>
-                                    Eliminar
-                                </Button>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            {columns.map((column) => (
-                                <TableCell
-                                    key={column.id}
-                                    align={column.align}
-                                    style={{
-                                        top: 57,
-                                        minWidth: column.minWidth,
-                                    }}>
-                                    {column.label}
-                                </TableCell>
-                            ))}
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {rows
-                            .slice(
-                                page * rowsPerPage,
-                                page * rowsPerPage + rowsPerPage,
-                            )
-                            .map((row) => {
-                                return (
-                                    <TableRow
-                                        hover
-                                        role="checkbox"
-                                        tabIndex={-1}
-                                        key={row.code}>
-                                        {columns.map((column) => {
-                                            const value = row[column.id]
-                                            return (
-                                                <TableCell
-                                                    key={column.id}
-                                                    align={column.align}>
-                                                    {column.format &&
-                                                    typeof value === "number"
-                                                        ? column.format(value)
-                                                        : value}
-                                                </TableCell>
-                                            )
-                                        })}
-                                    </TableRow>
-                                )
-                            })}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <TablePagination
-                rowsPerPageOptions={[10, 25, 100]}
-                component="div"
-                count={rows.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-        </Paper>
-    )
+  const handleSave = () => {
+    // Aquí se debe manejar la lógica para guardar los datos (por ejemplo, llamada a la API o actualización de estado)
+    console.log(formData)
+    handleCloseForm() // Cerrar el modal después de guardar
+  }
+
+  return (
+    <div className="p-7">
+        <PrimaryButton onClick={() => handleOpenForm()} variant="contained" color="primary" className="mb-4">
+        Regresar
+      </PrimaryButton>
+       <br />
+
+      <PrimaryButton onClick={() => handleOpenForm()} variant="contained" color="primary" className="mb-4">
+        Registrar
+      </PrimaryButton>
+
+      <table className="min-w-full table-auto border-collapse">
+        <thead>
+          <tr className="bg-gray-100">
+            {columns.map((column) => (
+              <th key={column.id} className="px-4 py-2 text-left text-sm font-semibold text-gray-600">
+                {column.label}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, index) => (
+            <tr key={index}className="border-b hover:bg-gray-50">
+              {columns.map((column) => {
+                const value = row[column.id]
+                return (
+                  <td key={column.id}  className="px-4 py-2 text-sm text-gray-700">
+                    {column.id === 'action' ? (
+                      <PrimaryButton onClick={() => handleOpenForm(row)} variant="contained" color="primary">
+                        {value}
+                      </PrimaryButton>
+                    ) : (
+                      value
+                    )}
+                  </td>
+                )
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {/* Modal para el formulario del proyecto */}
+      <Modal open={openForm} onClose={handleCloseForm}>
+  <div className="modal-content p-6 bg-white rounded-lg shadow-lg max-w-3xl mx-auto space-y-4">
+    <h2 className="text-2xl font-semibold text-gray-800">
+      {formData.project ? 'Editar Proyecto' : 'Registrar Proyecto'}
+    </h2>
+
+    <div className="space-y-4">
+      <InputLabel label="Categoría" />
+      <TextInput
+        value={formData.category}
+        onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+        className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+      />
+
+      <InputLabel label="Nomeclatura" />
+      <TextInput
+        value={formData.nomeclature}
+        onChange={(e) => setFormData({ ...formData, nomeclature: e.target.value })}
+        className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+      />
+
+      <InputLabel label="Proyecto" />
+      <TextInput
+        value={formData.project}
+        onChange={(e) => setFormData({ ...formData, project: e.target.value })}
+        className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+      />
+
+      <InputLabel label="Responsable" />
+      <TextInput
+        value={formData.responsible}
+        onChange={(e) => setFormData({ ...formData, responsible: e.target.value })}
+        className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+      />
+
+      <InputLabel label="Comunidad" />
+      <TextInput
+        value={formData.community}
+        onChange={(e) => setFormData({ ...formData, community: e.target.value })}
+        className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+      />
+
+      <InputLabel label="Estado" />
+      <TextInput
+        value={formData.status}
+        onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+        className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+      />
+
+      <InputLabel label="Presupuesto" />
+      <TextInput
+        type="number"
+        value={formData.budget}
+        onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+        className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+      />
+
+      <InputLabel label="Presupuesto Gastado" />
+      <TextInput
+        type="number"
+        value={formData.spent_budget}
+        onChange={(e) => setFormData({ ...formData, spent_budget: e.target.value })}
+        className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+      />
+
+      <InputLabel label="Fecha de Inicio" />
+      <TextInput
+        type="date"
+        value={formData.startDate}
+        onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
+        className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+      />
+
+      <InputLabel label="Fecha de Fin" />
+      <TextInput
+        type="date"
+        value={formData.endDate}
+        onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
+        className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+      />
+
+      <DialogActions>
+        <div className="flex space-x-4">
+          <PrimaryButton
+            onClick={handleSave}
+            variant="contained"
+            color="primary"
+            className="w-full py-2 text-white font-semibold bg-blue-600 hover:bg-blue-700 rounded-md"
+          >
+            Guardar
+          </PrimaryButton>
+          <DangerButton
+            onClick={handleCloseForm}
+            variant="contained"
+            color="secondary"
+            className="w-full py-2 text-white font-semibold bg-red-600 hover:bg-red-700 rounded-md"
+          >
+            Cancelar
+          </DangerButton>
+        </div>
+      </DialogActions>
+    </div>
+  </div>
+</Modal>
+
+    </div>
+  )
 }

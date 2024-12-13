@@ -8,15 +8,16 @@ use Inertia\Inertia;
 // Cargar rutas específicas desde otros archivos
 require_once __DIR__.'/ong/Project.php';
 require_once __DIR__.'/ong/Calendario.php';
+require_once __DIR__.'/ong/Community.php';
 
-Route::get('/', function () {
+Route::get('/choice.com', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         // 'canRegister' => Route::has('register'),
     ]);
 });
 
-Route::get('/dashboard', function () {
+Route::get('/choice.com/system', function () {
     return Inertia::render('Dashboard', [
         'canLogin' => Route::has('register')
     ]);
@@ -34,9 +35,8 @@ Route::get('/home', function () {
 
 require __DIR__.'/auth.php';
 
-require_once __DIR__.'/ong/Project.php';
-require_once __DIR__.'/ong/Calendario.php';
-require_once __DIR__.'/ong/Community.php';
+
+
 
 
 

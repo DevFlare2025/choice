@@ -14,9 +14,9 @@ export default function Menu() {
         {
             name: "Proyecto",
             subMenus: [
-                { name: "proyecto1", route: "#" },
+                { name: "Proyectos", route: "/projects" },
                 { name: "proyecto2", route: "#" },
-                { name: "calendario", route: "/calendars" },
+                { name: "Calendario", route: "/calendars" },
             ],
         },
         {

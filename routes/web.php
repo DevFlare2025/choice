@@ -34,8 +34,8 @@ Route::get('/home', function () {
 
 require __DIR__.'/auth.php';
 
-// require_once __DIR__.'/ong/Project.php';
-// require_once __DIR__.'/ong/Calendario.php';
+require_once __DIR__.'/ong/Project.php';
+require_once __DIR__.'/ong/Calendario.php';
 require_once __DIR__.'/ong/Community.php';
 
 

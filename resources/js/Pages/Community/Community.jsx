@@ -7,109 +7,54 @@ import DangerButton from "/resources/js/Components/DangerButton"
 import DialogActions from "@mui/material/DialogActions"
 
 const columns = [
-    { id: "category", label: "Categoria", minWidth: 100 },
-    { id: "nomeclature", label: "Nomeclatura", minWidth: 100 },
-    { id: "project", label: "Proyecto", minWidth: 170 },
-    { id: "responsible", label: "Responsable", minWidth: 100 },
     { id: "community", label: "Comunidad", minWidth: 100 },
-    { id: "status", label: "Estado", minWidth: 100 },
-    { id: "budget", label: "Presupuesto", minWidth: 100 },
-    { id: "spent_budget", label: "Presupuesto Gastado", minWidth: 100 },
-    { id: "startDate", label: "Fecha de Inicio", minWidth: 100 },
-    { id: "endDate", label: "Fecha Finalización", minWidth: 100 },
+    { id: "community_leader", label: "Lide Comunitario", minWidth: 100 },
+    { id: "population", label: "Habitantes", minWidth: 100 },
+    { id: "munipality", label: "Municipio", minWidth: 100 },
     { id: "action", label: "Acción", minWidth: 100 },
 ]
 
 function createData(
-    category,
-    nomeclature,
-    project,
-    responsible,
     community,
-    status,
-    budget,
-    spent_budget,
-    startDate,
-    endDate,
+    community_leader,
+    population,
+    munipality,
     action,
-    field1,
-    field2,
-    field3,
-    field4,
 ) {
     return {
-        category,
-        nomeclature,
-        project,
-        responsible,
         community,
-        status,
-        budget,
-        spent_budget,
-        startDate,
-        endDate,
+        community_leader,
+        population,
+        munipality,
         action,
-        field1,
-        field2,
-        field3,
-        field4,
     }
 }
 
 const rows = [
     createData(
-        "Categoria 1",
         "Nomeclatura 1",
         "Proyecto 1",
         "Responsable 1",
         "Comunidad 1",
-        "Activo",
-        10000,
-        5000,
-        "2024-01-01",
-        "2024-06-01",
-        "Editar",
-        "Valor 1",
-        "Valor 2",
-        "Valor 3",
-        "Valor 4",
+        "editar",
     ),
     createData(
-        "Categoria 2",
         "Nomeclatura 2",
         "Proyecto 2",
         "Responsable 2",
         "Comunidad 2",
-        "Inactivo",
-        20000,
-        15000,
-        "2024-02-01",
-        "2024-07-01",
-        "Editar",
-        "Valor 1",
-        "Valor 2",
-        "Valor 3",
-        "Valor 4",
+        "editar",
     ),
 ]
 
-export default function Project() {
+export default function Community() {
     const [openForm, setOpenForm] = useState(false)
     const [formData, setFormData] = useState({
-        category: "",
-        nomeclature: "",
-        project: "",
-        responsible: "",
         community: "",
-        status: "",
-        budget: "",
-        spent_budget: "",
-        startDate: "",
-        endDate: "",
-        field1: "",
-        field2: "",
-        field3: "",
-        field4: "",
+        community_leader: "",
+        population: "",
+        munipality: "",
+        action: "",
     })
 
     const handleOpenForm = (rowData = null) => {
@@ -117,16 +62,11 @@ export default function Project() {
             setFormData(rowData)
         } else {
             setFormData({
-                category: "",
-                nomeclature: "",
-                project: "",
-                responsible: "",
                 community: "",
-                status: "",
-                budget: "",
-                spent_budget: "",
-                startDate: "",
-                endDate: "",
+                community_leader: "",
+                population: "",
+                munipality: "",
+                action: "",
             })
         }
         setOpenForm(true)
@@ -207,14 +147,14 @@ export default function Project() {
                 <div className="modal-content p-6 bg-white rounded-lg shadow-lg max-w-3xl mx-auto space-y-4">
                     <h2 className="text-2xl font-semibold text-gray-800">
                         {formData.project
-                            ? "Editar Proyecto"
-                            : "Registrar Proyecto"}
+                            ? "Editar Comunidad"
+                            : "Registrar Cominidad"}
                     </h2>
 
                     <div className="space-y-4">
-                        <InputLabel label="Categoría" />
+                        <InputLabel label="Comunidad" />
                         <TextInput
-                            value={formData.category}
+                            value={formData.community}
                             onChange={(e) =>
                                 setFormData({
                                     ...formData,
@@ -224,9 +164,9 @@ export default function Project() {
                             className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                         />
 
-                        <InputLabel label="Nomeclatura" />
+                        <InputLabel label="Lider Comunitario" />
                         <TextInput
-                            value={formData.nomeclature}
+                            value={formData.community_leader}
                             onChange={(e) =>
                                 setFormData({
                                     ...formData,
@@ -236,9 +176,9 @@ export default function Project() {
                             className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                         />
 
-                        <InputLabel label="Proyecto" />
+                        <InputLabel label="Habitantes" />
                         <TextInput
-                            value={formData.project}
+                            value={formData.population}
                             onChange={(e) =>
                                 setFormData({
                                     ...formData,
@@ -248,89 +188,13 @@ export default function Project() {
                             className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                         />
 
-                        <InputLabel label="Responsable" />
+                        <InputLabel label="Municipio" />
                         <TextInput
-                            value={formData.responsible}
+                            value={formData.munipality}
                             onChange={(e) =>
                                 setFormData({
                                     ...formData,
                                     responsible: e.target.value,
-                                })
-                            }
-                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                        />
-
-                        <InputLabel label="Comunidad" />
-                        <TextInput
-                            value={formData.community}
-                            onChange={(e) =>
-                                setFormData({
-                                    ...formData,
-                                    community: e.target.value,
-                                })
-                            }
-                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                        />
-
-                        <InputLabel label="Estado" />
-                        <TextInput
-                            value={formData.status}
-                            onChange={(e) =>
-                                setFormData({
-                                    ...formData,
-                                    status: e.target.value,
-                                })
-                            }
-                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                        />
-
-                        <InputLabel label="Presupuesto" />
-                        <TextInput
-                            type="number"
-                            value={formData.budget}
-                            onChange={(e) =>
-                                setFormData({
-                                    ...formData,
-                                    budget: e.target.value,
-                                })
-                            }
-                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                        />
-
-                        <InputLabel label="Presupuesto Gastado" />
-                        <TextInput
-                            type="number"
-                            value={formData.spent_budget}
-                            onChange={(e) =>
-                                setFormData({
-                                    ...formData,
-                                    spent_budget: e.target.value,
-                                })
-                            }
-                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                        />
-
-                        <InputLabel label="Fecha de Inicio" />
-                        <TextInput
-                            type="date"
-                            value={formData.startDate}
-                            onChange={(e) =>
-                                setFormData({
-                                    ...formData,
-                                    startDate: e.target.value,
-                                })
-                            }
-                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                        />
-
-                        <InputLabel label="Fecha de Fin" />
-                        <TextInput
-                            type="date"
-                            value={formData.endDate}
-                            onChange={(e) =>
-                                setFormData({
-                                    ...formData,
-                                    endDate: e.target.value,
                                 })
                             }
                             className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"

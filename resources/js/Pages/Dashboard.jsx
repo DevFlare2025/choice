@@ -22,7 +22,7 @@ export default function Menu() {
         {
             name: "Comunidad",
             subMenus: [
-                { name: "Foros", route: "#" },
+                { name: "Comunidades", route: "/comunidades" },
                 { name: "Grupos", route: "#" },
             ],
         },

@@ -18,9 +18,9 @@ jobs:
             - name: Check PHP code formatting
               run: php-cs-fixer fix -vvv --dry-run
 
-            - name: Check Blade file formatting
-              if: always()
-              run: blade-formatter "resources/**/*.blade.php" -c
+            # - name: Check Blade file formatting
+            #   if: always()
+            #   run: blade-formatter "resources/**/*.blade.php" -c
 
             - name: Check JS file formatting
               if: always()

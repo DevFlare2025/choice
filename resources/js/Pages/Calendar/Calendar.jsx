@@ -6,6 +6,7 @@ import { faCircleXmark } from "@fortawesome/free-regular-svg-icons"
 import moment from "moment"
 import "moment/locale/es"
 import "./Calendar.css"
+import PrimaryButton from "/resources/js/Components/PrimaryButton"
 import { useState, useEffect } from "react"
 
 moment.locale("es")
@@ -196,6 +197,15 @@ function Calendario() {
 
     return (
         <div className="calendario">
+            <div className="p-2">
+                <PrimaryButton
+                    onClick={() => (window.location.href = route("dashboard"))}
+                    variant="contained"
+                    color="primary"
+                    className="mb-4">
+                    Regresar
+                </PrimaryButton>
+            </div>
             <Calendar
                 localizer={localizer}
                 events={events}

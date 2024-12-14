@@ -27,6 +27,13 @@ export default function Menu() {
             ],
         },
         {
+            name: "Reportes",
+            subMenus: [
+                { name: "Reportes", route: "#" },
+                { name: "Reporte2", route: "#" },
+            ],
+        },
+        {
             name: "Usuarios",
             subMenus: [
                 { name: "Listado", route: "#" },

@@ -28,3 +28,7 @@ calendario
 
 -   npm install react-big-calendar
 -   npm install moments
+
+para trabajar con la api se instalo
+
+php artisan install:api

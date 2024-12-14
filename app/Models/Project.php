@@ -8,15 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
-    protected $primarykey ="id";
+
+    protected $primaryKey = 'id';
+
+    protected $table = 'tb_projects';
+
     protected $fillable =[
         'categoria_id',
         'nomeclatura',
         'proyecto',
         'responsable_id',
+        'comunidad',
         'estado',
         'presupuesto',
-        'presupuestogastado',
+        'presupuestoGastado',
         'fechaInicio',
-        'fechaFin'];
+        'fechaFin'
+    ];
 }

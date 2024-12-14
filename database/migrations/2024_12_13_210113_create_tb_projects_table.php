@@ -12,26 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tb_projects', function (Blueprint $table) {
-            $table->id(); // Auto incremental ID
-            $table->foreignId('categoria_id')->constrained('tb_categorias')->cascadeOnDelete(); // Relación con categorías
+            $table->id();
+            $table->foreignId('categoria_id');
             $table->string('nomeclatura');
             $table->string('proyecto');
-            $table->foreignId('responsable_id')->constrained('tb_users')->cascadeOnDelete(); // Relación con usuarios
+            $table->foreignId('responsable_id');
+            $table->foreignId('comunidad');
             $table->string('estado');
-            $table->decimal('presupuesto', 15, 2); // Para manejar dinero con precisión
-            $table->decimal('presupuestoGastado', 15, 2); // Para manejar dinero con precisión
-            $table->date('fechaInicio')->nullable(); // Usar `date` para fechas
-            $table->date('fechaFin')->nullable();
-            $table->timestamps(); // Campos created_at y updated_at
-        });
-
-        // Tabla pivote para la relación muchos a muchos entre proyectos y comunidades
-        Schema::create('community_project', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('project_id')->constrained('tb_projects')->cascadeOnDelete();
-            $table->foreignId('community_id')->constrained('tb_communities')->cascadeOnDelete();
+            $table->decimal('presupuesto', 15, 2);
+            $table->decimal('presupuestoGastado', 15, 2);
+            $table->date('fechaInicio');
+            $table->date('fechaFin');
             $table->timestamps();
         });
+
     }
 
     /**
@@ -39,7 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('community_project');
         Schema::dropIfExists('tb_projects');
     }
 };

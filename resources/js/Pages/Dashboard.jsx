@@ -1,7 +1,9 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout"
-import { Head, Link } from "@inertiajs/react" // Asegúrate de importar Link desde Inertia
+import { Head, Link } from "@inertiajs/react"
 import { useState } from "react"
-import SubMenu from "../Components/submenu/Submenu" // Importa el componente
+import {route} from "ziggy-js";
+import SubMenu from "../Components/submenu/Submenu"
+import MiCard from "../Components/card/Card"
 
 export default function Menu() {
     const [activeMenu, setActiveMenu] = useState(null)
@@ -14,15 +16,15 @@ export default function Menu() {
         {
             name: "Proyecto",
             subMenus: [
-                { name: "Proyectos", route: "/projects" },
+                { name: "Proyectos", route: route("projects")},
                 { name: "proyecto2", route: "#" },
-                { name: "Calendario", route: "/calendars" },
+                { name: "Calendario", route: route("calendars")},
             ],
         },
         {
             name: "Comunidad",
             subMenus: [
-                { name: "Comunidades", route: "/comunidades" },
+                { name: "Comunidades", route: route("community") },
                 { name: "Grupos", route: "#" },
             ],
         },
@@ -55,11 +57,7 @@ export default function Menu() {
                 { name: "Aplicación", route: "#" },
             ],
         },
-        {
-            name: "Logout",
-            subMenus: [],
-            action: () => console.log("Cerrando sesión..."),
-        },
+
     ]
 
     return (
@@ -112,14 +110,59 @@ export default function Menu() {
                         ))}
                     </ul>
                 </aside>
-
-                {/* Main Content */}
                 <main className="flex-1 ml-64 p-4">
-                    {" "}
-                    {/* Asegúrate de dejar espacio para el sidebar */}
-                    {/* Aquí es donde el contenido de calendario se renderizará */}
-                    <h2 className="text-2xl font-bold">Calendario</h2>
-                    {/* Puedes colocar aquí el componente del calendario */}
+                    {/* este div es para el color fondo de las tarjeta */}
+                    <div className="flex-1 p-6 bg-gray-100">
+
+
+                    <div className="flex flex-wrap justify-center m-1">
+                        <div className="w-1/5 p-1">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Contabilidad"
+                                onActionClick={() =>
+                                    window.location.href = route("calendars")
+                                }
+                            />
+                        </div>
+                        <div className="w-1/5 p-1">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Presupuesto"
+                                onActionClick={() =>
+                                    window.location.href = route("calendars")
+                                }
+                            />
+                        </div>
+                        <div className="w-1/5 p-1">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Calendario"
+                                onActionClick={() =>
+                                    window.location.href = route("calendars")
+                                }
+                            />
+                        </div>
+                        <div className="w-1/5 p-1">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Eventos"
+                                onActionClick={() =>
+                                    window.location.href = route("calendars")
+                                }
+                            />
+                        </div>
+                        <div className="w-1/5 p-1">
+                            <MiCard
+                                description="Descripción de la tarjeta"
+                                actionText="Donaciones"
+                                onActionClick={() =>
+                                    window.location.href = route("calendars")
+                                }
+                            />
+                        </div>
+                    </div>
+                </div>
                 </main>
             </div>
         </AuthenticatedLayout>

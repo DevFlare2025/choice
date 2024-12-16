@@ -69,9 +69,9 @@ export default function Menu() {
                 <aside className="w-64 bg-gray-800 text-white fixed inset-y-0 left-0">
                     <div className="p-4 text-lg font-bold">Menú</div>
                     <ul>
-                        {menus.map((menu) => (
+                        {menus.map((menu, menuIndex) => (
                             <li
-                                key={menu.name}
+                                key={`menu-${menuIndex}`}
                                 className="border-b border-gray-700">
                                 <button
                                     onClick={() =>
@@ -83,88 +83,84 @@ export default function Menu() {
                                     {menu.name}
                                     {menu.subMenus.length > 0 && (
                                         <span>
-                                            {activeMenu === menu.name
-                                                ? "-"
-                                                : "+"}
+                                            {activeMenu === menu.name ? "-" : "+"}
                                         </span>
                                     )}
                                 </button>
-                                {menu.subMenus.length > 0 &&
-                                    activeMenu === menu.name && (
-                                        <SubMenu
-                                            subMenus={menu.subMenus.map(
-                                                (subMenu) => (
-                                                    <li key={subMenu.name}>
-                                                        <Link
-                                                            href={subMenu.route}
-                                                            className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">
-                                                            {subMenu.name}
-                                                        </Link>
-                                                    </li>
-                                                ),
-                                            )}
-                                            isActive={activeMenu === menu.name}
-                                        />
-                                    )}
+                                {menu.subMenus.length > 0 && activeMenu === menu.name && (
+                                    <ul>
+                                        {menu.subMenus.map((subMenu, subIndex) => (
+                                            <li
+                                                key={`subMenu-${menuIndex}-${subIndex}`}>
+                                                <Link
+                                                    href={subMenu.route}
+                                                    className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">
+                                                    {subMenu.name}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                             </li>
                         ))}
                     </ul>
                 </aside>
+
                 <main className="flex-1 ml-64 p-4">
-                    {/* este div es para el color fondo de las tarjeta */}
+                    {/* Este div es para el color fondo de las tarjetas */}
                     <div className="flex-1 p-6 bg-gray-100">
-
-
-                    <div className="flex flex-wrap justify-center m-1">
-                        <div className="w-1/5 p-1">
-                            <MiCard
-                                description="Descripción de la tarjeta"
-                                actionText="Contabilidad"
-                                onActionClick={() =>
-                                    window.location.href = route("calendars")
-                                }
-                            />
-                        </div>
-                        <div className="w-1/5 p-1">
-                            <MiCard
-                                description="Descripción de la tarjeta"
-                                actionText="Presupuesto"
-                                onActionClick={() =>
-                                    window.location.href = route("calendars")
-                                }
-                            />
-                        </div>
-                        <div className="w-1/5 p-1">
-                            <MiCard
-                                description="Descripción de la tarjeta"
-                                actionText="Calendario"
-                                onActionClick={() =>
-                                    window.location.href = route("calendars")
-                                }
-                            />
-                        </div>
-                        <div className="w-1/5 p-1">
-                            <MiCard
-                                description="Descripción de la tarjeta"
-                                actionText="Eventos"
-                                onActionClick={() =>
-                                    window.location.href = route("calendars")
-                                }
-                            />
-                        </div>
-                        <div className="w-1/5 p-1">
-                            <MiCard
-                                description="Descripción de la tarjeta"
-                                actionText="Donaciones"
-                                onActionClick={() =>
-                                    window.location.href = route("calendars")
-                                }
-                            />
+                        <div className="flex flex-wrap justify-center m-1">
+                            <div className="w-1/5 p-1">
+                                <MiCard
+                                    description="Descripción de la tarjeta"
+                                    actionText="Contabilidad"
+                                    onActionClick={() =>
+                                        window.location.href = route("calendars")
+                                    }
+                                />
+                            </div>
+                            <div className="w-1/5 p-1">
+                                <MiCard
+                                    description="Descripción de la tarjeta"
+                                    actionText="Presupuesto"
+                                    onActionClick={() =>
+                                        window.location.href = route("calendars")
+                                    }
+                                />
+                            </div>
+                            <div className="w-1/5 p-1">
+                                <MiCard
+                                    description="Descripción de la tarjeta"
+                                    actionText="Calendario"
+                                    onActionClick={() =>
+                                        window.location.href = route("calendars")
+                                    }
+                                />
+                            </div>
+                            <div className="w-1/5 p-1">
+                                <MiCard
+                                    description="Descripción de la tarjeta"
+                                    actionText="Eventos"
+                                    onActionClick={() =>
+                                        window.location.href = route("calendars")
+                                    }
+                                />
+                            </div>
+                            <div className="w-1/5 p-1">
+                                <MiCard
+                                    description="Descripción de la tarjeta"
+                                    actionText="Donaciones"
+                                    onActionClick={() =>
+                                        window.location.href = route("calendars")
+                                    }
+                                />
+                            </div>
                         </div>
                     </div>
-                </div>
                 </main>
             </div>
         </AuthenticatedLayout>
-    )
+    );
+
+
 }

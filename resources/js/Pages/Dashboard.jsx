@@ -1,7 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout"
 import { Head, Link } from "@inertiajs/react"
 import { useState } from "react"
-import {route} from "ziggy-js";
+import { route } from "ziggy-js"
 import SubMenu from "../Components/submenu/Submenu"
 import MiCard from "../Components/card/Card"
 
@@ -16,9 +16,9 @@ export default function Menu() {
         {
             name: "Proyecto",
             subMenus: [
-                { name: "Proyectos", route: route("projects")},
+                { name: "Proyectos", route: route("projects") },
                 { name: "proyecto2", route: "#" },
-                { name: "Calendario", route: route("calendars")},
+                { name: "Calendario", route: route("calendars") },
             ],
         },
         {
@@ -57,7 +57,6 @@ export default function Menu() {
                 { name: "Aplicación", route: "#" },
             ],
         },
-
     ]
 
     return (
@@ -83,24 +82,29 @@ export default function Menu() {
                                     {menu.name}
                                     {menu.subMenus.length > 0 && (
                                         <span>
-                                            {activeMenu === menu.name ? "-" : "+"}
+                                            {activeMenu === menu.name
+                                                ? "-"
+                                                : "+"}
                                         </span>
                                     )}
                                 </button>
-                                {menu.subMenus.length > 0 && activeMenu === menu.name && (
-                                    <ul>
-                                        {menu.subMenus.map((subMenu, subIndex) => (
-                                            <li
-                                                key={`subMenu-${menuIndex}-${subIndex}`}>
-                                                <Link
-                                                    href={subMenu.route}
-                                                    className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">
-                                                    {subMenu.name}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
+                                {menu.subMenus.length > 0 &&
+                                    activeMenu === menu.name && (
+                                        <ul>
+                                            {menu.subMenus.map(
+                                                (subMenu, subIndex) => (
+                                                    <li
+                                                        key={`subMenu-${menuIndex}-${subIndex}`}>
+                                                        <Link
+                                                            href={subMenu.route}
+                                                            className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">
+                                                            {subMenu.name}
+                                                        </Link>
+                                                    </li>
+                                                ),
+                                            )}
+                                        </ul>
+                                    )}
                             </li>
                         ))}
                     </ul>
@@ -115,7 +119,8 @@ export default function Menu() {
                                     description="Descripción de la tarjeta"
                                     actionText="Contabilidad"
                                     onActionClick={() =>
-                                        window.location.href = route("calendars")
+                                        (window.location.href =
+                                            route("calendars"))
                                     }
                                 />
                             </div>
@@ -124,7 +129,8 @@ export default function Menu() {
                                     description="Descripción de la tarjeta"
                                     actionText="Presupuesto"
                                     onActionClick={() =>
-                                        window.location.href = route("calendars")
+                                        (window.location.href =
+                                            route("calendars"))
                                     }
                                 />
                             </div>
@@ -133,7 +139,8 @@ export default function Menu() {
                                     description="Descripción de la tarjeta"
                                     actionText="Calendario"
                                     onActionClick={() =>
-                                        window.location.href = route("calendars")
+                                        (window.location.href =
+                                            route("calendars"))
                                     }
                                 />
                             </div>
@@ -142,7 +149,8 @@ export default function Menu() {
                                     description="Descripción de la tarjeta"
                                     actionText="Eventos"
                                     onActionClick={() =>
-                                        window.location.href = route("calendars")
+                                        (window.location.href =
+                                            route("calendars"))
                                     }
                                 />
                             </div>
@@ -151,7 +159,8 @@ export default function Menu() {
                                     description="Descripción de la tarjeta"
                                     actionText="Donaciones"
                                     onActionClick={() =>
-                                        window.location.href = route("calendars")
+                                        (window.location.href =
+                                            route("calendars"))
                                     }
                                 />
                             </div>
@@ -160,7 +169,5 @@ export default function Menu() {
                 </main>
             </div>
         </AuthenticatedLayout>
-    );
-
-
+    )
 }

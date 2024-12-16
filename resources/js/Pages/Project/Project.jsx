@@ -6,8 +6,6 @@ import DangerButton from "/resources/js/Components/DangerButton"
 import DialogActions from "@mui/material/DialogActions"
 import BasicModal from "@/Components/basicmodal/BasicModal"
 
-
-
 const columns = [
     { id: "category", label: "Categoria", minWidth: 100 },
     { id: "nomeclature", label: "Nomeclatura", minWidth: 100 },
@@ -140,40 +138,39 @@ export default function Project() {
     return (
         <div className="p-7 space-y-4">
             <div className="flex justify-between items-center space-x-4">
-            <PrimaryButton
-                onClick={() => (window.location.href = route("dashboard"))}
-                variant="contained"
-                color="primary"
-                className="mb-4">
-                Regresar
-            </PrimaryButton>
-                <div className="flex flex-col sm:flex-row sm:space-x-4 sm:justify-center">
                 <PrimaryButton
-                onClick={() => handleOpenForm()}
-                variant="contained"
-                color="primary"
-                className="mb-4">
-                Registrar
-            </PrimaryButton>
+                    onClick={() => (window.location.href = route("dashboard"))}
+                    variant="contained"
+                    color="primary"
+                    className="mb-4">
+                    Regresar
+                </PrimaryButton>
+                <div className="flex flex-col sm:flex-row sm:space-x-4 sm:justify-center">
+                    <PrimaryButton
+                        onClick={() => handleOpenForm()}
+                        variant="contained"
+                        color="primary"
+                        className="mb-4">
+                        Registrar
+                    </PrimaryButton>
 
-            <PrimaryButton
-                onClick={() => handleOpenForm()}
-                variant="contained"
-                color=""
-                className="mb-4">
-                PDF
-            </PrimaryButton>
+                    <PrimaryButton
+                        onClick={() => handleOpenForm()}
+                        variant="contained"
+                        color=""
+                        className="mb-4">
+                        PDF
+                    </PrimaryButton>
 
-            <PrimaryButton
-                onClick={() => handleOpenForm()}
-                variant="contained"
-                color="success"
-                className="mb-4">
-                EXCEL
-            </PrimaryButton>
+                    <PrimaryButton
+                        onClick={() => handleOpenForm()}
+                        variant="contained"
+                        color="success"
+                        className="mb-4">
+                        EXCEL
+                    </PrimaryButton>
                 </div>
             </div>
-
 
             <table className="min-w-full table-auto border-collapse">
                 <thead>

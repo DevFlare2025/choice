@@ -32,3 +32,19 @@ calendario
 para trabajar con la api se instalo
 
 php artisan install:api
+
+para manejar las rutas con name
+
+-   npm install ziggy-js
+
+para los archivos excel
+npm i xlsx
+
+para los archivos pdf crear una plantilla y visulizar en navegador par lugo ser descargado
+npm install jspdf
+
+npm install @mui/material @emotion/react @emotion/styled
+
+investigar
+
+-   npm install react-hook-form

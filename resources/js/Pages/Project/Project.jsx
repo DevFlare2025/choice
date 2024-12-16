@@ -1,10 +1,10 @@
 import React, { useState } from "react"
-import Modal from "/resources/js/Components/Modal"
 import InputLabel from "/resources/js/Components/InputLabel"
 import PrimaryButton from "/resources/js/Components/PrimaryButton"
 import TextInput from "/resources/js/Components/TextInput"
 import DangerButton from "/resources/js/Components/DangerButton"
 import DialogActions from "@mui/material/DialogActions"
+import BasicModal from "@/Components/basicmodal/BasicModal"
 
 const columns = [
     { id: "category", label: "Categoria", minWidth: 100 },
@@ -32,10 +32,6 @@ function createData(
     startDate,
     endDate,
     action,
-    field1,
-    field2,
-    field3,
-    field4,
 ) {
     return {
         category,
@@ -49,10 +45,6 @@ function createData(
         startDate,
         endDate,
         action,
-        field1,
-        field2,
-        field3,
-        field4,
     }
 }
 
@@ -106,10 +98,6 @@ export default function Project() {
         spent_budget: "",
         startDate: "",
         endDate: "",
-        field1: "",
-        field2: "",
-        field3: "",
-        field4: "",
     })
 
     const handleOpenForm = (rowData = null) => {
@@ -142,24 +130,47 @@ export default function Project() {
         handleCloseForm() // Cerrar el modal después de guardar
     }
 
-    return (
-        <div className="p-7">
-            <PrimaryButton
-                onClick={() => (window.location.href = route("dashboard"))}
-                variant="contained"
-                color="primary"
-                className="mb-4">
-                Regresar
-            </PrimaryButton>
-            <br />
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormData({ ...formData, [name]: value })
+    }
 
-            <PrimaryButton
-                onClick={() => handleOpenForm()}
-                variant="contained"
-                color="primary"
-                className="mb-4">
-                Registrar
-            </PrimaryButton>
+    return (
+        <div className="p-7 space-y-4">
+            <div className="flex justify-between items-center space-x-4">
+                <PrimaryButton
+                    onClick={() => (window.location.href = route("dashboard"))}
+                    variant="contained"
+                    color="primary"
+                    className="mb-4">
+                    Regresar
+                </PrimaryButton>
+                <div className="flex flex-col sm:flex-row sm:space-x-4 sm:justify-center">
+                    <PrimaryButton
+                        onClick={() => handleOpenForm()}
+                        variant="contained"
+                        color="primary"
+                        className="mb-4">
+                        Registrar
+                    </PrimaryButton>
+
+                    <PrimaryButton
+                        onClick={() => handleOpenForm()}
+                        variant="contained"
+                        color=""
+                        className="mb-4">
+                        PDF
+                    </PrimaryButton>
+
+                    <PrimaryButton
+                        onClick={() => handleOpenForm()}
+                        variant="contained"
+                        color="success"
+                        className="mb-4">
+                        EXCEL
+                    </PrimaryButton>
+                </div>
+            </div>
 
             <table className="min-w-full table-auto border-collapse">
                 <thead>
@@ -203,7 +214,7 @@ export default function Project() {
             </table>
 
             {/* Modal para el formulario del proyecto */}
-            <Modal open={openForm} onClose={handleCloseForm}>
+            <BasicModal open={openForm} onClose={handleCloseForm}>
                 <div className="modal-content p-6 bg-white rounded-lg shadow-lg max-w-3xl mx-auto space-y-4">
                     <h2 className="text-2xl font-semibold text-gray-800">
                         {formData.project
@@ -214,6 +225,7 @@ export default function Project() {
                     <div className="space-y-4">
                         <InputLabel label="Categoría" />
                         <TextInput
+                            name="category"
                             value={formData.category}
                             onChange={(e) =>
                                 setFormData({
@@ -226,6 +238,7 @@ export default function Project() {
 
                         <InputLabel label="Nomeclatura" />
                         <TextInput
+                            name="nomeclature"
                             value={formData.nomeclature}
                             onChange={(e) =>
                                 setFormData({
@@ -238,6 +251,7 @@ export default function Project() {
 
                         <InputLabel label="Proyecto" />
                         <TextInput
+                            name="project"
                             value={formData.project}
                             onChange={(e) =>
                                 setFormData({
@@ -250,6 +264,7 @@ export default function Project() {
 
                         <InputLabel label="Responsable" />
                         <TextInput
+                            name="responsible"
                             value={formData.responsible}
                             onChange={(e) =>
                                 setFormData({
@@ -262,6 +277,7 @@ export default function Project() {
 
                         <InputLabel label="Comunidad" />
                         <TextInput
+                            name="community"
                             value={formData.community}
                             onChange={(e) =>
                                 setFormData({
@@ -274,6 +290,7 @@ export default function Project() {
 
                         <InputLabel label="Estado" />
                         <TextInput
+                            name="status"
                             value={formData.status}
                             onChange={(e) =>
                                 setFormData({
@@ -286,6 +303,7 @@ export default function Project() {
 
                         <InputLabel label="Presupuesto" />
                         <TextInput
+                            name="budget"
                             type="number"
                             value={formData.budget}
                             onChange={(e) =>
@@ -299,6 +317,7 @@ export default function Project() {
 
                         <InputLabel label="Presupuesto Gastado" />
                         <TextInput
+                            name="spent_budget"
                             type="number"
                             value={formData.spent_budget}
                             onChange={(e) =>
@@ -312,6 +331,7 @@ export default function Project() {
 
                         <InputLabel label="Fecha de Inicio" />
                         <TextInput
+                            name="startDate"
                             type="date"
                             value={formData.startDate}
                             onChange={(e) =>
@@ -325,6 +345,7 @@ export default function Project() {
 
                         <InputLabel label="Fecha de Fin" />
                         <TextInput
+                            name="endDate"
                             type="date"
                             value={formData.endDate}
                             onChange={(e) =>
@@ -356,7 +377,7 @@ export default function Project() {
                         </DialogActions>
                     </div>
                 </div>
-            </Modal>
+            </BasicModal>
         </div>
     )
 }

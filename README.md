@@ -31,3 +31,9 @@ calendario
 
 para las rutas
 npm install ziggy-js
+
+para crear el archivo api en route al terminar la instalacion decimos que no a las migraciones 
+php artisan install:api 
+
+para crear un contralador en la api 
+php artisan make:controller  Api/ProjectController --resource

@@ -14,15 +14,15 @@ export default function Menu() {
         {
             name: "Proyecto",
             subMenus: [
-                { name: "proyecto1", route: route("projects") },
+                { name: "Proyectos", route: route("projects") },
                 { name: "proyecto2", route: "#" },
-                { name: "calendario", route: route("calendars") },
+                { name: "Calendario", route: route("calendars") },
             ],
         },
         {
             name: "Comunidad",
             subMenus: [
-                { name: "Comunidad", route: route("community") },
+                { name: "Comunidades", route: route("community") },
                 { name: "Grupos", route: "#" },
             ],
         },
@@ -48,21 +48,16 @@ export default function Menu() {
                 { name: "Aplicación", route: "#" },
             ],
         },
-        {
-            name: "Logout",
-            subMenus: [],
-            action: () => console.log("Cerrando sesión..."),
-        },
     ]
 
     return (
         <AuthenticatedLayout>
-            <Head title="Menú" />
+            <Head title="Sistema Choice" />
 
             <div className="flex h-screen">
                 {/* Sidebar */}
                 <aside className="w-64 bg-gray-800 text-white fixed inset-y-0 left-0">
-                    <div className="p-4 text-lg font-bold">Menú</div>
+                    <div className="p-4 text-lg font-bold">Sistema principal</div>
                     <ul>
                         {menus.map((menu) => (
                             <li
@@ -108,11 +103,7 @@ export default function Menu() {
 
                 {/* Main Content */}
                 <main className="flex-1 ml-64 p-4">
-                    {" "}
-                    {/* Asegúrate de dejar espacio para el sidebar */}
-                    {/* Aquí es donde el contenido de calendario se renderizará */}
-                    <h2 className="text-2xl font-bold">Calendario</h2>
-                    {/* Puedes colocar aquí el componente del calendario */}
+
                 </main>
             </div>
         </AuthenticatedLayout>

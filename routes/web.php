@@ -17,7 +17,7 @@ Route::get('/choice.com', function () {
     ]);
 });
 
-Route::get('/choice.com/system', function () {
+Route::get('/cobanchoice.com', function () {
     return Inertia::render('Dashboard', [
         'canLogin' => Route::has('register')
     ]);

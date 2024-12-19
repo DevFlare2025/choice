@@ -6,6 +6,8 @@ import { faCircleXmark } from "@fortawesome/free-regular-svg-icons"
 import moment from "moment"
 import "moment/locale/es"
 import "./Calendar.css"
+import Button from "@mui/material/Button"
+import { Box } from "@mui/material"
 import { useState, useEffect } from "react"
 
 moment.locale("es")
@@ -196,6 +198,17 @@ function Calendario() {
 
     return (
         <div className="calendario">
+            <Box mb={2}>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                        window.location.href = route("dashboard") // Aquí puedes redirigir con una lógica personalizada
+                    }}>
+                    Regresar
+                </Button>
+            </Box>
+
             <Calendar
                 localizer={localizer}
                 events={events}

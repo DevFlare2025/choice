@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class CommunityController extends Controller
 {
@@ -11,7 +12,8 @@ class CommunityController extends Controller
      */
     public function index()
     {
-        dd("controlador comunidad ");
+        //dd("controlador comunidad ");
+        return Inertia::render("Community/Community");
     }
 
     /**

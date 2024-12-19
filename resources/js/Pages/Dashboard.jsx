@@ -1,7 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout"
-import { Head, Link } from "@inertiajs/react" // Asegúrate de importar Link desde Inertia
+import { Head, Link } from "@inertiajs/react"
 import { useState } from "react"
-import SubMenu from "../Components/submenu/Submenu" // Importa el componente
+import SubMenu from "../Components/submenu/Submenu"
 
 export default function Menu() {
     const [activeMenu, setActiveMenu] = useState(null)
@@ -14,15 +14,15 @@ export default function Menu() {
         {
             name: "Proyecto",
             subMenus: [
-                { name: "proyecto1", route: "#" },
+                { name: "proyecto1", route: route("projects") },
                 { name: "proyecto2", route: "#" },
-                { name: "calendario", route: "/calendars" },
+                { name: "calendario", route: route("calendars") },
             ],
         },
         {
             name: "Comunidad",
             subMenus: [
-                { name: "Foros", route: "#" },
+                { name: "Comunidad", route: route("community") },
                 { name: "Grupos", route: "#" },
             ],
         },

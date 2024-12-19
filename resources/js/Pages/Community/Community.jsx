@@ -11,35 +11,11 @@ import Button from "@mui/material/Button"
 import { Box } from "@mui/material"
 
 const columns = [
-    { id: "name", label: "Categoria", minWidth: 170 },
-    { id: "code", label: "Nomeclatura", minWidth: 100 },
-    { id: "project", label: "Proyecto", minWidth: 100 },
-    { id: "responsa", label: "Responsable", minWidth: 100 },
-    { id: "community", label: "Comunidad", minWidth: 100 },
-    {
-        id: "population",
-        label: "Presupuesto",
-        minWidth: 100,
-        align: "right",
-        format: (value) => value.toLocaleString("en-US"),
-    },
-    {
-        id: "size",
-        label: "Presupuesto Gastado",
-        minWidth: 100,
-        align: "right",
-        format: (value) => value.toLocaleString("en-US"),
-    },
-    {
-        id: "density",
-        label: "Estado",
-        minWidth: 100,
-        align: "right",
-        format: (value) => value.toFixed(2),
-    },
-    { id: "fechainicio", label: "Fecha de inicio" },
-    { id: "fechafin", label: "Fecha de fin" },
-    { id: "editar", label: "Acción" },
+    { id: "idcomunid", label: "Comunidad", minWidth: 170 },
+    { id: "lide_comunidad", label: "Lider Comunitario", minWidth: 100 },
+    { id: "cant_habitantes", label: "Habitantes", minWidth: 100 },
+    { id: "idMunicipio", label: "Municipio", minWidth: 100 },
+    { id: "accion", label: "Accion", minWidth: 100 },
 ]
 
 function createData(name, code, population, size) {

@@ -28,3 +28,6 @@ calendario
 
 -   npm install react-big-calendar
 -   npm install moments
+
+para las rutas
+npm install ziggy-js

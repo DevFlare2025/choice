@@ -136,14 +136,18 @@ export default function ColumnGroupingTable() {
                                         variant="contained"
                                         color="primary"
                                         size="small"
-                                        onClick={() => handleOpenModal("register")}>
+                                        onClick={() =>
+                                            handleOpenModal("register")
+                                        }>
                                         Registrar
                                     </Button>
                                     <Button
                                         variant="contained"
                                         color="primary"
                                         size="small"
-                                        onClick={() => handleOpenModal("edit", rows[0])}>
+                                        onClick={() =>
+                                            handleOpenModal("edit", rows[0])
+                                        }>
                                         Editar
                                     </Button>
                                     <Button
@@ -215,14 +219,19 @@ export default function ColumnGroupingTable() {
 
             {/* Modal Dialog for Register/Edit */}
             <Dialog open={openModal} onClose={handleCloseModal}>
-                <DialogTitle>{editMode ? "Editar Comunidad" : "Registrar Comunidad"}</DialogTitle>
+                <DialogTitle>
+                    {editMode ? "Editar Comunidad" : "Registrar Comunidad"}
+                </DialogTitle>
                 <DialogContent>
                     <TextField
                         label="Comunidad"
                         fullWidth
                         value={formData.idcomunid}
                         onChange={(e) =>
-                            setFormData({ ...formData, idcomunid: e.target.value })
+                            setFormData({
+                                ...formData,
+                                idcomunid: e.target.value,
+                            })
                         }
                         style={{ marginBottom: "10px" }}
                     />
@@ -231,7 +240,10 @@ export default function ColumnGroupingTable() {
                         fullWidth
                         value={formData.lide_comunidad}
                         onChange={(e) =>
-                            setFormData({ ...formData, lide_comunidad: e.target.value })
+                            setFormData({
+                                ...formData,
+                                lide_comunidad: e.target.value,
+                            })
                         }
                         style={{ marginBottom: "10px" }}
                     />
@@ -240,7 +252,10 @@ export default function ColumnGroupingTable() {
                         fullWidth
                         value={formData.cant_habitantes}
                         onChange={(e) =>
-                            setFormData({ ...formData, cant_habitantes: e.target.value })
+                            setFormData({
+                                ...formData,
+                                cant_habitantes: e.target.value,
+                            })
                         }
                         style={{ marginBottom: "10px" }}
                     />
@@ -249,7 +264,10 @@ export default function ColumnGroupingTable() {
                         fullWidth
                         value={formData.idMunicipio}
                         onChange={(e) =>
-                            setFormData({ ...formData, idMunicipio: e.target.value })
+                            setFormData({
+                                ...formData,
+                                idMunicipio: e.target.value,
+                            })
                         }
                         style={{ marginBottom: "10px" }}
                     />

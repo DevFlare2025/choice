@@ -9,8 +9,13 @@ import TablePagination from "@mui/material/TablePagination"
 import TableRow from "@mui/material/TableRow"
 import Button from "@mui/material/Button"
 import { Box } from "@mui/material"
-import { Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@mui/material"
-
+import {
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    TextField,
+} from "@mui/material"
 
 const columns = [
     { id: "name", label: "Categoria", minWidth: 170 },
@@ -101,8 +106,8 @@ export default function ColumnGroupingTable() {
         if (isEditMode) {
             setRows((prevRows) =>
                 prevRows.map((row) =>
-                    row.code === formData.code ? { ...row, ...formData } : row
-                )
+                    row.code === formData.code ? { ...row, ...formData } : row,
+                ),
             )
         } else {
             setRows((prevRows) => [
@@ -141,7 +146,10 @@ export default function ColumnGroupingTable() {
                                         variant="contained"
                                         color="primary"
                                         size="small"
-                                        onClick={() => window.location.href = route('dashboard')}>
+                                        onClick={() =>
+                                            (window.location.href =
+                                                route("dashboard"))
+                                        }>
                                         Regresar
                                     </Button>
                                 </Box>
@@ -154,14 +162,18 @@ export default function ColumnGroupingTable() {
                                         variant="contained"
                                         color="primary"
                                         size="small"
-                                        onClick={() => handleOpenModal("register")}>
+                                        onClick={() =>
+                                            handleOpenModal("register")
+                                        }>
                                         Registrar
                                     </Button>
                                     <Button
                                         variant="contained"
                                         color="primary"
                                         size="small"
-                                        onClick={() => handleOpenModal("edit", rows[0])}>
+                                        onClick={() =>
+                                            handleOpenModal("edit", rows[0])
+                                        }>
                                         Editar
                                     </Button>
                                     <Button
@@ -193,15 +205,22 @@ export default function ColumnGroupingTable() {
                         {rows
                             .slice(
                                 page * rowsPerPage,
-                                page * rowsPerPage + rowsPerPage
+                                page * rowsPerPage + rowsPerPage,
                             )
                             .map((row) => (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                                <TableRow
+                                    hover
+                                    role="checkbox"
+                                    tabIndex={-1}
+                                    key={row.code}>
                                     {columns.map((column) => {
                                         const value = row[column.id]
                                         return (
-                                            <TableCell key={column.id} align={column.align}>
-                                                {column.format && typeof value === "number"
+                                            <TableCell
+                                                key={column.id}
+                                                align={column.align}>
+                                                {column.format &&
+                                                typeof value === "number"
                                                     ? column.format(value)
                                                     : value}
                                             </TableCell>
@@ -222,7 +241,9 @@ export default function ColumnGroupingTable() {
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
             <Dialog open={openModal} onClose={handleCloseModal}>
-                <DialogTitle>{isEditMode ? "Editar Registro" : "Registrar Nuevo"}</DialogTitle>
+                <DialogTitle>
+                    {isEditMode ? "Editar Registro" : "Registrar Nuevo"}
+                </DialogTitle>
                 <DialogContent>
                     <TextField
                         autoFocus

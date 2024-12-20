@@ -15,46 +15,71 @@ import {
     DialogContent,
     DialogTitle,
     TextField,
+    MenuItem,
 } from "@mui/material"
 
+// para mientas
+const perso = [
+    { value: "persona1", label: "jose caal" },
+    { value: "persona2", label: "pedro chub" },
+    { value: "persona3", label: "esmeralda peres" },
+]
+
+const estapro = [
+    { value: "Finalizado", label: "Finalizado" },
+    { value: "Proceso", label: "Proceso" },
+    { value: "Ejecucion", label: "Ejecucion" },
+]
+
+const estadoconmu = [
+    { value: "comunidad1", label: "san jose" },
+    { value: "comunidad2", label: "pedro limon" },
+    { value: "comunidad3", label: "carcha" },
+]
+
+const estados = [
+    { value: "categoria1", label: "Categoría 1" },
+    { value: "categoria2", label: "Categoría 2" },
+    { value: "categoria3", label: "Categoría 3" },
+]
+
 const columns = [
-    { id: "name", label: "Categoria", minWidth: 170 },
-    { id: "code", label: "Nomeclatura", minWidth: 100 },
-    { id: "project", label: "Proyecto", minWidth: 100 },
-    { id: "responsa", label: "Responsable", minWidth: 100 },
-    { id: "community", label: "Comunidad", minWidth: 100 },
+    { id: "idcategoria", label: "Categoria", minWidth: 170 },
+    { id: "idnomeclatura", label: "Nomeclatura", minWidth: 100 },
+    { id: "idproyectoproject", label: "Proyecto", minWidth: 100 },
+    { id: "idresponsa", label: "Responsable", minWidth: 100 },
+    { id: "idcommunity", label: "Comunidad", minWidth: 100 },
     {
-        id: "population",
+        id: "idpresupuesto",
         label: "Presupuesto",
         minWidth: 100,
         align: "right",
         format: (value) => value.toLocaleString("en-US"),
     },
     {
-        id: "size",
+        id: "idprespuestogastado",
         label: "Presupuesto Gastado",
         minWidth: 100,
         align: "right",
         format: (value) => value.toLocaleString("en-US"),
     },
     {
-        id: "density",
+        id: "idestado",
         label: "Estado",
         minWidth: 100,
         align: "right",
         format: (value) => value.toFixed(2),
     },
-    { id: "fechainicio", label: "Fecha de inicio" },
-    { id: "fechafin", label: "Fecha de fin" },
+    { id: "idfechainicio", label: "Fecha de inicio" },
+    { id: "idfechafin", label: "Fecha de fin" },
     { id: "editar", label: "Acción" },
 ]
 
 const initialRows = [
-    { name: "India", code: "IN", population: 1324171354, size: 3287263 },
-    { name: "China", code: "CN", population: 1403500365, size: 9596961 },
-    { name: "Italy", code: "IT", population: 60483973, size: 301340 },
-    { name: "United States", code: "US", population: 327167434, size: 9833520 },
-    // Agrega más datos si es necesario
+    { idcategoria: "India", idnomeclatura: "IN",idproyectoproject:"Jornda vacu",idresponsa:"jose caal",idcommunity:"canton",idpresupuesto:"20000",idprespuestogastado:"200000",idestado:"finalizado",idfechainicio:"12/02/2023",idfechafin:"12/02/2024"},
+    { idcategoria: "China", idnomeclatura: "CN",idproyectoproject:"Jornda vacu",idresponsa:"jose caal",idcommunity:"canton" ,idpresupuesto:"20000",idprespuestogastado:"200000",idestado:"finalizado",idfechainicio:"12/02/2023",idfechafin:"12/02/2024"},
+    { idcategoria: "Italy", idnomeclatura: "IT",idproyectoproject:"Jornda vacu",idresponsa:"jose caal",idcommunity:"canton",idpresupuesto:"20000",idprespuestogastado:"200000",idestado:"finalizado",idfechainicio:"12/02/2023",idfechafin:"12/02/2024"  },
+    { idcategoria: "United States", idnomeclatura: "US",idproyectoproject:"Jornda vacu",idresponsa:"jose caal",idcommunity:"canton",idpresupuesto:"20000",idprespuestogastado:"200000",idestado:"finalizado",idfechainicio:"12/02/2023",idfechafin:"12/02/2024" },
 ]
 
 export default function ColumnGroupingTable() {
@@ -62,10 +87,17 @@ export default function ColumnGroupingTable() {
     const [isEditMode, setIsEditMode] = useState(false)
     const [rows, setRows] = useState(initialRows)
     const [formData, setFormData] = useState({
-        name: "",
-        code: "",
-        population: 0,
-        size: 0,
+        idcategoria: "",
+        idnomeclatura: "",
+        idproyectoproject:"",
+        idresponsa:"",
+        idcommunity:"",
+        idpresupuesto:"",
+        idprespuestogastado:"",
+        idestado:"",
+        idfechainicio:"",
+        idfechafin:"",
+
     })
     const [page, setPage] = useState(0)
     const [rowsPerPage, setRowsPerPage] = useState(10)
@@ -74,17 +106,30 @@ export default function ColumnGroupingTable() {
         setIsEditMode(mode === "edit")
         if (mode === "edit" && row) {
             setFormData({
-                name: row.name,
-                code: row.code,
-                population: row.population,
-                size: row.size,
+                idcategoria: row.idcategoria ||"",
+                idnomeclatura: row.idnomeclatura ||"",
+                idproyectoproject:row.idproyectoproject ||"",
+                idresponsa:row.idresponsa ||"",
+                idcommunity:row.idcommunity ||"",
+                idpresupuesto:row.idpresupuesto ||"",
+                idprespuestogastado:row.idprespuestogastado ||"",
+                idestado:row.idestado ||"",
+                idfechainicio:row.idfechainicio ||"",
+                idfechafin:row.idfechafin ||"",
+
             })
         } else {
             setFormData({
-                name: "",
-                code: "",
-                population: 0,
-                size: 0,
+                idcategoria: "",
+                idnomeclatura: "",
+                idproyectoproject:"",
+                idresponsa:"",
+                idcommunity:"",
+                idpresupuesto:"",
+                idprespuestogastado:"",
+                idestado:"",
+                idfechainicio:"",
+                idfechafin:"",
             })
         }
         setOpenModal(true)
@@ -101,26 +146,25 @@ export default function ColumnGroupingTable() {
             [id]: value,
         }))
     }
-
     const handleSave = () => {
         if (isEditMode) {
             setRows((prevRows) =>
                 prevRows.map((row) =>
-                    row.code === formData.code ? { ...row, ...formData } : row,
-                ),
+                    row.idcategoria === formData.idcategoria
+                        ? { ...row, ...formData }
+                        : row
+                )
             )
         } else {
             setRows((prevRows) => [
                 ...prevRows,
-                {
-                    ...formData,
-                    population: parseInt(formData.population),
-                    size: parseInt(formData.size),
-                },
+                { ...formData, id: `row-${Date.now()}` } // ID único para nuevas filas
             ])
         }
         handleCloseModal()
     }
+
+
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage)
@@ -169,20 +213,11 @@ export default function ColumnGroupingTable() {
                                     </Button>
                                     <Button
                                         variant="contained"
-                                        color="primary"
-                                        size="small"
-                                        onClick={() =>
-                                            handleOpenModal("edit", rows[0])
-                                        }>
-                                        Editar
-                                    </Button>
-                                    <Button
-                                        variant="contained"
-                                        color="secondary"
+                                        color="success"
                                         size="small"
                                         onClick={() => console.log("Eliminar")}
                                         style={{ marginLeft: "8px" }}>
-                                        Eliminar
+                                        Excel
                                     </Button>
                                 </Box>
                             </TableCell>
@@ -211,10 +246,30 @@ export default function ColumnGroupingTable() {
                                 <TableRow
                                     hover
                                     role="checkbox"
-                                    tabIndex={-1}
-                                    key={row.code}>
+                                    tabIndex={-1 }
+                                    key={row.idcategoria}>
                                     {columns.map((column) => {
                                         const value = row[column.id]
+                                        if (column.id === "editar") {
+                                            return (
+                                                <TableCell
+                                                    key={column.id}
+                                                    align="center">
+                                                    <Button
+                                                        variant="contained"
+                                                        color="warning"
+                                                        size="small"
+                                                        onClick={() =>
+                                                            handleOpenModal(
+                                                                "edit",
+                                                                row,
+                                                            )
+                                                        }>
+                                                        Editar
+                                                    </Button>
+                                                </TableCell>
+                                            )
+                                        }
                                         return (
                                             <TableCell
                                                 key={column.id}
@@ -240,62 +295,148 @@ export default function ColumnGroupingTable() {
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
-            <Dialog open={openModal} onClose={handleCloseModal}>
-                <DialogTitle>
-                    {isEditMode ? "Editar Registro" : "Registrar Nuevo"}
-                </DialogTitle>
-                <DialogContent>
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="name"
-                        label="Categoria"
-                        type="text"
-                        fullWidth
-                        variant="outlined"
-                        value={formData.name}
-                        onChange={handleFormChange}
-                    />
-                    <TextField
-                        margin="dense"
-                        id="code"
-                        label="Nomeclatura"
-                        type="text"
-                        fullWidth
-                        variant="outlined"
-                        value={formData.code}
-                        onChange={handleFormChange}
-                    />
-                    <TextField
-                        margin="dense"
-                        id="population"
-                        label="Presupuesto"
-                        type="number"
-                        fullWidth
-                        variant="outlined"
-                        value={formData.population}
-                        onChange={handleFormChange}
-                    />
-                    <TextField
-                        margin="dense"
-                        id="size"
-                        label="Presupuesto Gastado"
-                        type="number"
-                        fullWidth
-                        variant="outlined"
-                        value={formData.size}
-                        onChange={handleFormChange}
-                    />
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleCloseModal} color="primary">
-                        Cancelar
-                    </Button>
-                    <Button onClick={handleSave} color="primary">
-                        {isEditMode ? "Guardar cambios" : "Registrar"}
-                    </Button>
-                </DialogActions>
-            </Dialog>
+          <Dialog open={openModal} onClose={handleCloseModal}>
+    <DialogTitle>
+        {isEditMode ? "Editar Registro" : "Registrar Nuevo"}
+    </DialogTitle>
+    <DialogContent>
+        <TextField
+            margin="dense"
+            id="idcategoria"
+            label="Categoria"
+            select
+            fullWidth
+            variant="outlined"
+            value={formData.idcategoria}
+            onChange={handleFormChange}>
+            {estados.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                </MenuItem>
+            ))}
+        </TextField>
+        <TextField
+            margin="dense"
+            id="idnomeclatura"
+            label="Nomeclatura"
+            type="text"
+            fullWidth
+            variant="outlined"
+            value={formData.idnomeclatura}
+            onChange={handleFormChange}
+        />
+        <TextField
+            margin="dense"
+            id="idproyectoproject"
+            label="Proyecto"
+            type="text"
+            fullWidth
+            variant="outlined"
+            value={formData.idproyectoproject}
+            onChange={handleFormChange}
+        />
+        <TextField
+            margin="dense"
+            id="idresponsa"
+            label="Responsable"
+            select
+            fullWidth
+            variant="outlined"
+            value={formData.idresponsa}
+            onChange={handleFormChange}>
+            {perso.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                </MenuItem>
+            ))}
+        </TextField>
+        <TextField
+            margin="dense"
+            id="idcommunity"
+            label="Comunidad"
+            select
+            fullWidth
+            variant="outlined"
+            value={formData.idcommunity}
+            onChange={handleFormChange}>
+            {estadoconmu.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                </MenuItem>
+            ))}
+        </TextField>
+        <TextField
+            margin="dense"
+            id="idpresupuesto"
+            label="Presupuesto"
+            type="number"
+            fullWidth
+            variant="outlined"
+            value={formData.idpresupuesto}
+            onChange={handleFormChange}
+        />
+        <TextField
+            margin="dense"
+            id="idprespuestogastado"
+            label="Presupuesto Gastado"
+            type="number"
+            fullWidth
+            variant="outlined"
+            value={formData.idprespuestogastado}
+            onChange={handleFormChange}
+        />
+        <TextField
+            margin="dense"
+            id="idestado"
+            label="Estado"
+            select
+            fullWidth
+            variant="outlined"
+            value={formData.idestado}
+            onChange={handleFormChange}>
+            {estapro.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                </MenuItem>
+            ))}
+        </TextField>
+        <TextField
+            margin="dense"
+            id="idfechainicio"
+            label="Fecha de Inicio"
+            type="date"
+            fullWidth
+            variant="outlined"
+            value={formData.idfechainicio}
+            onChange={handleFormChange}
+            InputLabelProps={{
+                shrink: true,
+            }}
+        />
+        <TextField
+            margin="dense"
+            id="idfechafin"
+            label="Fecha de Fin"
+            type="date"
+            fullWidth
+            variant="outlined"
+            value={formData.idfechafin}
+            onChange={handleFormChange}
+            InputLabelProps={{
+                shrink: true,
+            }}
+        />
+    </DialogContent>
+    <DialogActions>
+        <Button onClick={handleCloseModal} color="secondary">
+            Cancelar
+        </Button>
+        <Button onClick={handleSave} color="primary">
+            Guardar
+        </Button>
+    </DialogActions>
+</Dialog>
+
         </Paper>
     )
 }

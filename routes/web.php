@@ -9,11 +9,12 @@ use Inertia\Inertia;
 require_once __DIR__.'/ong/Project.php';
 require_once __DIR__.'/ong/Calendario.php';
 require_once __DIR__.'/ong/Community.php';
+require_once __DIR__.'/ong/LineaBase.php';
 
 Route::get('/choice.com', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
-        // 'canRegister' => Route::has('register'),
+        'canRegister' => Route::has('register'),
     ]);
 });
 

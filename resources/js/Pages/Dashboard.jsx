@@ -25,7 +25,7 @@ export default function Menu() {
             name: "Comunidad",
             subMenus: [
                 { name: "Comunidades", route: route("community") },
-                { name: "Grupos", route: "#" },
+                { name: "Linea Base", route: route("LineaBase") },
             ],
         },
         {

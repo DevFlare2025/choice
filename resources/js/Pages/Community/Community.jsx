@@ -33,9 +33,8 @@ function createData(
     return { idcomunid, lide_comunidad, cant_habitantes, size, idMunicipio }
 }
 
-
 export default function ColumnGroupingTable() {
-    const [rows,setRows] = React.useState([
+    const [rows, setRows] = React.useState([
         createData("India", "IN", 1324171354, 3287263),
         createData("China", "CN", 1403500365, 9596961),
         createData("Italy", "IT", 60483973, 301340),
@@ -51,7 +50,7 @@ export default function ColumnGroupingTable() {
         createData("Russia", "RU", 146793744, 17098246),
         createData("Nigeria", "NG", 200962417, 923768),
         createData("Brazil", "BR", 210147125, 8515767),
-    ]);
+    ])
 
     const [page, setPage] = React.useState(0)
     const [rowsPerPage, setRowsPerPage] = React.useState(10)
@@ -99,25 +98,24 @@ export default function ColumnGroupingTable() {
 
     const handleSubmit = () => {
         if (!formData.idcomunid || !formData.lide_comunidad) {
-            alert("Todos los campos son obligatorios");
-            return;
+            alert("Todos los campos son obligatorios")
+            return
         }
         if (editMode) {
             setRows((prevRows) =>
                 prevRows.map((row) =>
-                    row.idcomunid === formData.idcomunid ? formData : row
-                )
-            );
+                    row.idcomunid === formData.idcomunid ? formData : row,
+                ),
+            )
         } else {
-            setRows((prevRows) => [...prevRows, { ...formData }]);
+            setRows((prevRows) => [...prevRows, { ...formData }])
         }
-        handleCloseModal();
-    };
-
+        handleCloseModal()
+    }
 
     return (
-        <Paper sx={{ width: "100%"  }}>
-            <TableContainer sx={{ maxHeight: 560, }}>
+        <Paper sx={{ width: "100%" }}>
+            <TableContainer sx={{ maxHeight: 560 }}>
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                         <TableRow>
@@ -200,7 +198,10 @@ export default function ColumnGroupingTable() {
                                                         color="primary"
                                                         size="small"
                                                         onClick={() =>
-                                                            handleOpenModal("edit",row)
+                                                            handleOpenModal(
+                                                                "edit",
+                                                                row,
+                                                            )
                                                         }>
                                                         Editar
                                                     </Button>

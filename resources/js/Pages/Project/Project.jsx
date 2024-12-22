@@ -303,7 +303,6 @@ export default function ColumnGroupingTable() {
         setPage(0)
     }
 
-
     const handleOpenModal = (mode, row) => {
         setEditMode(mode === "edit")
         if (mode === "edit" && row) {

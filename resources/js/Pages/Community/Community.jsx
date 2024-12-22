@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { useState } from "react"
 import Paper from "@mui/material/Paper"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
@@ -16,37 +16,42 @@ import DialogTitle from "@mui/material/DialogTitle"
 import TextField from "@mui/material/TextField"
 
 const columns = [
-    { id: "idcomunid", label: "Comunidad", minWidth: 170 },
+    { id: "idcomunid", label: "Comunidad", minWidth: 100 },
     { id: "lide_comunidad", label: "Lider Comunitario", minWidth: 100 },
     { id: "cant_habitantes", label: "Habitantes", minWidth: 100 },
     { id: "idMunicipio", label: "Municipio", minWidth: 100 },
     { id: "accion", label: "Accion", minWidth: 100 },
 ]
 
-function createData(name, code, population, size) {
-    const density = population / size
-    return { name, code, population, size, density }
+function createData(
+    idcomunid,
+    lide_comunidad,
+    cant_habitantes,
+    idMunicipio,
+    size,
+) {
+    return { idcomunid, lide_comunidad, cant_habitantes, size, idMunicipio }
 }
 
-const rows = [
-    createData("India", "IN", 1324171354, 3287263),
-    createData("China", "CN", 1403500365, 9596961),
-    createData("Italy", "IT", 60483973, 301340),
-    createData("United States", "US", 327167434, 9833520),
-    createData("Canada", "CA", 37602103, 9984670),
-    createData("Australia", "AU", 25475400, 7692024),
-    createData("Germany", "DE", 83019200, 357578),
-    createData("Ireland", "IE", 4857000, 70273),
-    createData("Mexico", "MX", 126577691, 1972550),
-    createData("Japan", "JP", 126317000, 377973),
-    createData("France", "FR", 67022000, 640679),
-    createData("United Kingdom", "GB", 67545757, 242495),
-    createData("Russia", "RU", 146793744, 17098246),
-    createData("Nigeria", "NG", 200962417, 923768),
-    createData("Brazil", "BR", 210147125, 8515767),
-]
-
 export default function ColumnGroupingTable() {
+    const [rows, setRows] = React.useState([
+        createData("India", "IN", 1324171354, 3287263),
+        createData("China", "CN", 1403500365, 9596961),
+        createData("Italy", "IT", 60483973, 301340),
+        createData("United States", "US", 327167434, 9833520),
+        createData("Canada", "CA", 37602103, 9984670),
+        createData("Australia", "AU", 25475400, 7692024),
+        createData("Germany", "DE", 83019200, 357578),
+        createData("Ireland", "IE", 4857000, 70273),
+        createData("Mexico", "MX", 126577691, 1972550),
+        createData("Japan", "JP", 126317000, 377973),
+        createData("France", "FR", 67022000, 640679),
+        createData("United Kingdom", "GB", 67545757, 242495),
+        createData("Russia", "RU", 146793744, 17098246),
+        createData("Nigeria", "NG", 200962417, 923768),
+        createData("Brazil", "BR", 210147125, 8515767),
+    ])
+
     const [page, setPage] = React.useState(0)
     const [rowsPerPage, setRowsPerPage] = React.useState(10)
     const [openModal, setOpenModal] = React.useState(false)
@@ -56,7 +61,6 @@ export default function ColumnGroupingTable() {
         lide_comunidad: "",
         cant_habitantes: "",
         idMunicipio: "",
-        accion: "",
     })
 
     const handleChangePage = (event, newPage) => {
@@ -76,7 +80,6 @@ export default function ColumnGroupingTable() {
                 lide_comunidad: row.lide_comunidad,
                 cant_habitantes: row.cant_habitantes,
                 idMunicipio: row.idMunicipio,
-                accion: row.accion,
             })
         } else {
             setFormData({
@@ -84,7 +87,6 @@ export default function ColumnGroupingTable() {
                 lide_comunidad: "",
                 cant_habitantes: "",
                 idMunicipio: "",
-                accion: "",
             })
         }
         setOpenModal(true)
@@ -95,12 +97,18 @@ export default function ColumnGroupingTable() {
     }
 
     const handleSubmit = () => {
+        if (!formData.idcomunid || !formData.lide_comunidad) {
+            alert("Todos los campos son obligatorios")
+            return
+        }
         if (editMode) {
-            // Handle editing logic
-            console.log("Editing data", formData)
+            setRows((prevRows) =>
+                prevRows.map((row) =>
+                    row.idcomunid === formData.idcomunid ? formData : row,
+                ),
+            )
         } else {
-            // Handle register logic
-            console.log("Registering data", formData)
+            setRows((prevRows) => [...prevRows, { ...formData }])
         }
         handleCloseModal()
     }
@@ -143,20 +151,11 @@ export default function ColumnGroupingTable() {
                                     </Button>
                                     <Button
                                         variant="contained"
-                                        color="primary"
-                                        size="small"
-                                        onClick={() =>
-                                            handleOpenModal("edit", rows[0])
-                                        }>
-                                        Editar
-                                    </Button>
-                                    <Button
-                                        variant="contained"
                                         color="secondary"
                                         size="small"
                                         onClick={() => console.log("Eliminar")}
                                         style={{ marginLeft: "8px" }}>
-                                        Eliminar
+                                        Excel
                                     </Button>
                                 </Box>
                             </TableCell>
@@ -181,29 +180,42 @@ export default function ColumnGroupingTable() {
                                 page * rowsPerPage,
                                 page * rowsPerPage + rowsPerPage,
                             )
-                            .map((row) => {
-                                return (
-                                    <TableRow
-                                        hover
-                                        role="checkbox"
-                                        tabIndex={-1}
-                                        key={row.code}>
-                                        {columns.map((column) => {
-                                            const value = row[column.id]
-                                            return (
-                                                <TableCell
-                                                    key={column.id}
-                                                    align={column.align}>
-                                                    {column.format &&
-                                                    typeof value === "number"
-                                                        ? column.format(value)
-                                                        : value}
-                                                </TableCell>
-                                            )
-                                        })}
-                                    </TableRow>
-                                )
-                            })}
+                            .map((row, rowIndex) => (
+                                <TableRow
+                                    hover
+                                    role="checkbox"
+                                    tabIndex={-1}
+                                    key={rowIndex}>
+                                    {columns.map((column) => {
+                                        const value = row[column.id]
+                                        return (
+                                            <TableCell
+                                                key={column.id}
+                                                align={column.align}>
+                                                {column.id === "accion" ? (
+                                                    <Button
+                                                        variant="contained"
+                                                        color="primary"
+                                                        size="small"
+                                                        onClick={() =>
+                                                            handleOpenModal(
+                                                                "edit",
+                                                                row,
+                                                            )
+                                                        }>
+                                                        Editar
+                                                    </Button>
+                                                ) : column.format &&
+                                                  typeof value === "number" ? (
+                                                    column.format(value)
+                                                ) : (
+                                                    value
+                                                )}
+                                            </TableCell>
+                                        )
+                                    })}
+                                </TableRow>
+                            ))}
                     </TableBody>
                 </Table>
             </TableContainer>
@@ -217,7 +229,6 @@ export default function ColumnGroupingTable() {
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
 
-            {/* Modal Dialog for Register/Edit */}
             <Dialog open={openModal} onClose={handleCloseModal}>
                 <DialogTitle>
                     {editMode ? "Editar Comunidad" : "Registrar Comunidad"}
@@ -268,15 +279,6 @@ export default function ColumnGroupingTable() {
                                 ...formData,
                                 idMunicipio: e.target.value,
                             })
-                        }
-                        style={{ marginBottom: "10px" }}
-                    />
-                    <TextField
-                        label="Accion"
-                        fullWidth
-                        value={formData.accion}
-                        onChange={(e) =>
-                            setFormData({ ...formData, accion: e.target.value })
                         }
                         style={{ marginBottom: "10px" }}
                     />

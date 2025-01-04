@@ -16,6 +16,10 @@ import General from "./General"
 import Services from "./Services"
 import Education from "./Education"
 import Water from "./WaterAndSanitation"
+import Health from "./Health"
+import ActorsMap from "./ActorsMap"
+import Agriculture from "./Agriculture"
+import LivestockActivities from "./LivestockActivities"
 
 export default function LineaBase() {
     const [value, setValue] = React.useState(0)
@@ -24,11 +28,19 @@ export default function LineaBase() {
         setValue(newValue)
     }
 
-    const components = [<General />, <Services />, <Education />, <Water />]
+    const components = [
+        <General />,
+        <Services />,
+        <Education />,
+        <Water />,
+        <Health />,
+        <ActorsMap />,
+        <Agriculture/>,
+        <LivestockActivities/>
+    ]
 
     return (
         <div className="space-y-6">
-            {/*otros componentes para los demas */}
             <Tabs
                 value={value}
                 onChange={handleChange}
@@ -43,7 +55,6 @@ export default function LineaBase() {
                 <Tab icon={<PetsIcon />} label="Actividades Pecuarias" />
                 <Tab icon={<ForestIcon />} label="Ecología" />
             </Tabs>
-            {/*para el formulario input*/}
             <div className="mt-4 mx-4">{components[value]}</div>
         </div>
     )

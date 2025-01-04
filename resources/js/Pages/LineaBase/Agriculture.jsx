@@ -5,7 +5,6 @@ import Select from "../../Components/Select"
 import DynamicTable from "../../Components/DynamicTable"
 
 function Agriculture() {
-
     const [value, setValue, periodo, setPeriodo] = React.useState(0)
 
     const handlePeriodoChange = (event) => {
@@ -15,7 +14,6 @@ function Agriculture() {
         { value: "-", label: "-" },
         { value: "Consumo", label: "Consumo" },
         { value: "Ventas", label: "Venta" },
-
     ]
     const handleChange = (event, newValue) => {
         setValue(newValue)
@@ -28,16 +26,15 @@ function Agriculture() {
         "Destino",
         "Precio de venta",
         "Mes de siembra",
-        "Mes de cosecha"
+        "Mes de cosecha",
     ]
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-4 mx-4">
             {/* Consumo de alimentos */}
             <div className="col-span-4">
-
                 <h1 className="text-2xl font-bold mb-4 p-3">
-                    76.	¿Qué cultivos existen en la comunidad?
+                    76. ¿Qué cultivos existen en la comunidad?
                 </h1>
                 <div className="flex flex-wrap items-center gap-4">
                     <Input
@@ -85,11 +82,8 @@ function Agriculture() {
                     rows={5}
                     columns={8}
                     columnNames={columnHeaders}
-
                 />
-
             </div>
-
 
             <div className="col-span-4">
                 <Input

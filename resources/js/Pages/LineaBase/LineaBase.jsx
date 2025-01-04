@@ -20,6 +20,7 @@ import Health from "./Health"
 import ActorsMap from "./ActorsMap"
 import Agriculture from "./Agriculture"
 import LivestockActivities from "./LivestockActivities"
+import Ecology from "./Ecology"
 
 export default function LineaBase() {
     const [value, setValue] = React.useState(0)
@@ -35,8 +36,9 @@ export default function LineaBase() {
         <Water />,
         <Health />,
         <ActorsMap />,
-        <Agriculture/>,
-        <LivestockActivities/>
+        <Agriculture />,
+        <LivestockActivities />,
+        <Ecology />,
     ]
 
     return (

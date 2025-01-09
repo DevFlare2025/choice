@@ -113,7 +113,7 @@ export default function Menu() {
                 <main className="flex-1 ml-64 p-4">
                     {/* Este div es para el color fondo de las tarjetas */}
                     <div className="flex-1 p-6 bg-gray-100">
-                        <div className="flex flex-wrap justify-center m-1">
+                       {/*  <div className="flex flex-wrap justify-center m-1">
                             <div className="w-1/5 p-1">
                                 <MiCard
                                     description="Descripción de la tarjeta"
@@ -164,7 +164,7 @@ export default function Menu() {
                                     }
                                 />
                             </div>
-                        </div>
+</div>*/}
                     </div>
                 </main>
             </div>

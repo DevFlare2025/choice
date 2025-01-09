@@ -28,7 +28,7 @@ export default function ActorsMap() {
     ]
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-4 mx-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-4 mx-4 p-8">
             {/* Consumo de alimentos */}
 
             <div className="col-span-4">
@@ -99,9 +99,7 @@ export default function ActorsMap() {
                 className="w-full md:w-[300px] p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <div className="col-span-4">
-                <h1 className="text-2xl font-bold mb-4 p-3">
-                    75. Mapa de Actores
-                </h1>
+                <h1 className="text-gray-700 mb-4 p-3">75. Mapa de Actores</h1>
                 <div className="flex flex-wrap items-center gap-4">
                     <div className="flex items-center space-x-2">
                         <Input
@@ -126,7 +124,7 @@ export default function ActorsMap() {
                     </div>
                 </div>
 
-                <button className="px-4 py-2 bg-fuchsia-500 text-white rounded-lg hover:bg-fuchsia-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm mt-4">
+                <button className="px-4 py-2 bg-fuchsia-500 text-white rounded-lg hover:bg-fuchsia-700 text-sm mt-4 ">
                     Registrar
                 </button>
 
@@ -137,20 +135,19 @@ export default function ActorsMap() {
                 />
             </div>
 
-            <button
-                className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
-                onClick={() => {
-                    window.location.href = route("dashboard")
-                }}>
-                Regresar
-            </button>
-            <div className="flex space-x-2">
-                <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
-                    Registrar
-                </button>
-                <button className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 text-sm">
-                    Excel
-                </button>
+            <div className="col-span-4 flex items-center justify-center">
+                <div className="space-x-12">
+                    <button className=" bg-green-700 text-white rounded-lg hover:bg-green-600 text-lg h-12 w-28">
+                        Registrar
+                    </button>
+                    <button
+                        className=" bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-lg h-12 w-28"
+                        onClick={() => {
+                            window.location.href = route("dashboard")
+                        }}>
+                        Regresar
+                    </button>
+                </div>
             </div>
         </div>
     )

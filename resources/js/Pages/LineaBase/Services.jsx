@@ -73,25 +73,23 @@ export default function Services() {
             <Input
                 type="text"
                 label="35. ¿Quién(es) prestan el servicio?"
-                 placeholder="¿Quién(es) prestan el servicio?"
+                placeholder="¿Quién(es) prestan el servicio?"
                 className="w-full md:w-[300px] p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-             />
-
-   <div className="col-span-4 flex items-center justify-center">
-           <div className="space-x-12">
-            <button className=" bg-green-700 text-white rounded-lg hover:bg-green-600 text-lg h-12 w-28">
-
-                 Registrar
-                </button>
-                <button
-                   className=" bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-lg h-12 w-28"
-                   onClick={() => {
-                    window.location.href = route("dashboard")
-                 }}>
-                Regresar
-            </button>
+            />
+            <div className="col-span-4 flex items-center justify-center">
+                <div className="space-x-12">
+                    <button className=" bg-green-700 text-white rounded-lg hover:bg-green-600 text-lg h-12 w-28">
+                        Registrar
+                    </button>
+                    <button
+                        className=" bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-lg h-12 w-28"
+                        onClick={() => {
+                            window.location.href = route("dashboard")
+                        }}>
+                        Regresar
+                    </button>
+                </div>
             </div>
         </div>
-</div>
     )
 }

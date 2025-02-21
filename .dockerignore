@@ -1,0 +1,11 @@
+# Ignorar archivos de entorno y dependencias locales
+.env
+node_modules/
+vendor/
+*.log
+
+# Ignorar archivos temporales y de caché
+*.swp
+.idea/
+.vscode/
+

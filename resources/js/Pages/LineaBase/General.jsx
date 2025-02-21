@@ -23,6 +23,7 @@ export default function General() {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-4 mx-4 p-8">
+            <div classname="bg-red-600 text-center"></div>
             <Input
                 type="text"
                 label="1. Nombre comunidad"

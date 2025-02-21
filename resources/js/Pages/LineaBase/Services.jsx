@@ -80,8 +80,8 @@ export default function Services() {
                 <div className="space-x-12">
                     <button className=" bg-green-700 text-white rounded-lg hover:bg-green-600 text-lg h-12 w-28">
                         Registrar
-                     </button>
-<div className=""> </div>
+                    </button>
+                    <div className=""> </div>
                     <button
                         className=" bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-lg h-12 w-28"
                         onClick={() => {

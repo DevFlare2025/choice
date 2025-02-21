@@ -5,12 +5,12 @@ import react from "@vitejs/plugin-react"
 export default defineConfig({
     plugins: [
         laravel({
-            input:[ "resources/js/app.jsx","resources/js/app.js"],
+            input: ["resources/js/app.jsx", "resources/js/app.js"],
             refresh: true,
         }),
         react(),
     ],
-    optimizeDeps:{
-         include:["react","react-dom"],
+    optimizeDeps: {
+        include: ["react", "react-dom"],
     },
 })

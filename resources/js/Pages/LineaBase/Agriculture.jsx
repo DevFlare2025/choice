@@ -32,9 +32,9 @@ function Agriculture() {
     return (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-4 mx-4 p-8">
             {/* NOTA: Consumo de alimentos */}
-<div className="bg-red-500 text-center">
-<h1>hola </h1>
-</div>
+            <div className="bg-red-500 text-center">
+                <h1>hola </h1>
+            </div>
             <div className="col-span-4">
                 <h1 className="text-gray-700  mb-4 p-3">
                     76. ¿Qué cultivos existen en la comunidad?

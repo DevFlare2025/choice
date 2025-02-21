@@ -22,7 +22,7 @@ function Ecology() {
                     </div>
                 </div>
             </div>
-<div className="flex bg-red-500 "></div>
+            <div className="flex bg-red-500 "></div>
             <Input
                 type="text"
                 label=" 100	¿Qué especies de árboles tiene? "
@@ -141,8 +141,7 @@ function Ecology() {
                     </div>
                 </div>
             </div>
-<div className="">
-</div>
+            <div className=""></div>
             <div className="col-span-4">
                 <div className="flex items-center space-x-4">
                     <div className="flex items-center space-x-2">
@@ -309,16 +308,10 @@ function Ecology() {
                         onClick={() => {
                             window.location.href = route("dashboard")
                         }}>
-Regresar
-
-
-
+                        Regresar
                     </button>
-
                 </div>
-
             </div>
-
         </div>
     )
 }

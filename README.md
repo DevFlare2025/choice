@@ -11,18 +11,16 @@ cuenta con los modulos:
 
 dependencias
 
--   npm install @mui/material @emotion/react @emotion/styled
--   npm install @mui/material @mui/icons-material
 
 -   npm install -g pnpm
 -   npm install --save-dev blade-formatter
 -   composer require --dev friendsofphp/php-cs-fixer
 -   npm install react-router-dom
--   npm install @mui/material @mui/icons-material @mui/x-date-pickers dayjs
+-   npm install  dayjs
 
 iconos
 
--   npm install @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons
+-   pnpm add @fortawesome/fontawesome-free@^6.7.2
 
 calendario
 
@@ -48,3 +46,15 @@ npm install jspdf
 investigar
 
 -   npm install react-hook-form
+
+desistalar dependencias
+
+pnpm add @mui/icons-material
+
+pnpm add clsx
+
+
+pnpm add @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons
+
+
+pnpm add @emotion/sheet react-transition-group prop-types

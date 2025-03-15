@@ -5,14 +5,16 @@ const Input = ({
     required,
     type = "text",
     value,
-    placeholder,
-    className,
+    placeholder = "Type here",
+    className = "",
 }) => {
     return (
-        <div className="flex flex-col mb-4">
-            <label htmlFor={name} className="text-gray-700 block mb-1">
-                {label}
-            </label>
+        <div className=" flex flex-col mb-2 bg-error w-96 ">
+            {label && (
+                <label htmlFor={name} className="text-gray-700 block mb-1">
+                    {label}
+                </label>
+            )}
             <input
                 type={type}
                 id={name}
@@ -21,7 +23,7 @@ const Input = ({
                 required={required}
                 value={value}
                 placeholder={placeholder}
-                className={`w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
+                className={`input input-bordered w-96  ${className}`}
             />
         </div>
     )

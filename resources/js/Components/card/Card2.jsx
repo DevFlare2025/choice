@@ -1,12 +1,4 @@
 import React from "react"
-import Box from "@mui/material/Box"
-import Card from "@mui/material/Card"
-import CardContent from "@mui/material/CardContent"
-import CardActions from "@mui/material/CardActions"
-import Typography from "@mui/material/Typography"
-import Button from "@mui/material/Button"
-import { IconButton } from "@mui/material" // Si deseas usar botones de íconos
-import HomeIcon from "@mui/icons-material/Home" // Ejemplo de ícono de Material UI
 
 export default function Welcome({
     title,
@@ -16,25 +8,23 @@ export default function Welcome({
     icon,
 }) {
     return (
-        <Box sx={{ maxWidth: 820, margin: "auto", marginTop: 1 }}>
-            <Card variant="outlined">
-                <CardContent>
-                    <Typography variant="h5" component="div">
-                        {title}
-                    </Typography>
-                    <Typography sx={{ mt: 1.5 }} color="text.secondary">
+        <div className="max-w-3xl mx-auto mt-4">
+            <div className="card border border-base-300 bg-base-100 shadow-lg">
+                <div className="card-body">
+                    <h2 className="text-xl font-semibold">{title}</h2>
+                    <p className="mt-1.5 text-sm text-gray-600">
                         {description}
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    <Button
-                        size="small"
-                        onClick={onActionClick}
-                        startIcon={icon}>
+                    </p>
+                </div>
+                <div className="card-actions justify-end">
+                    <button
+                        className="btn btn-primary btn-sm"
+                        onClick={onActionClick}>
+                        {icon && <span className="mr-2">{icon}</span>}
                         {actionText}
-                    </Button>
-                </CardActions>
-            </Card>
-        </Box>
+                    </button>
+                </div>
+            </div>
+        </div>
     )
 }

@@ -22,13 +22,13 @@ const PDFGenerator = ({ rows, columns }) => {
     }
 
     return (
-        <PrimaryButton
+        <button
             onClick={handleGeneratePDF}
             variant="contained"
             color="error"
             className="mb-4">
             PDF
-        </PrimaryButton>
+        </button>
     )
 }
 

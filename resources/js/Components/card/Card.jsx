@@ -1,12 +1,4 @@
 import React from "react"
-import Box from "@mui/material/Box"
-import Card from "@mui/material/Card"
-import CardContent from "@mui/material/CardContent"
-import CardActions from "@mui/material/CardActions"
-import Typography from "@mui/material/Typography"
-import Button from "@mui/material/Button"
-import { IconButton } from "@mui/material" // Si deseas usar botones de íconos
-import HomeIcon from "@mui/icons-material/Home" // Ejemplo de ícono de Material UI
 
 export default function MiCard({
     title,
@@ -16,27 +8,21 @@ export default function MiCard({
     icon,
 }) {
     return (
-        <Box sx={{ maxWidth: 170, margin: "4px auto", marginTop: 2 }}>
-            <Card variant="outlined">
-                <CardContent>
-                    <Typography variant="h5" component="div">
-                        {title}
-                    </Typography>
-                    <Typography sx={{ mt: 0.1 }} color="text.secondary">
-                        {description}
-                    </Typography>
-                </CardContent>
-                <CardActions sx={{ justifyContent: "center" }}>
-                    <Button
-                        size="small"
-                        variant="contained"
-                        color="primary"
-                        onClick={onActionClick}
-                        startIcon={icon}>
+        <div className="max-w-sm mx-auto my-4 mt-2">
+            <div className="card border border-base-300 bg-base-100 shadow-xl">
+                <div className="card-body">
+                    <h2 className="card-title">{title}</h2>
+                    <p className="text-sm text-gray-500">{description}</p>
+                </div>
+                <div className="card-actions justify-center p-5">
+                    <button
+                        className="btn btn-primary btn-sm"
+                        onClick={onActionClick}>
+                        {icon && <span className="mr-2">{icon}</span>}
                         {actionText}
-                    </Button>
-                </CardActions>
-            </Card>
-        </Box>
+                    </button>
+                </div>
+            </div>
+        </div>
     )
 }

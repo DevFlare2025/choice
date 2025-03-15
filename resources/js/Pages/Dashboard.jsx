@@ -65,20 +65,20 @@ export default function Menu() {
 
             <div className="flex h-screen">
                 {/* Sidebar */}
-                <aside className="w-64 bg-gray-800 text-white fixed inset-y-0 left-0">
+                <aside className="w-64 bg-cyan-950 text-white fixed inset-y-0 left-0">
                     <div className="p-4 text-lg font-bold">Menú</div>
                     <ul>
                         {menus.map((menu, menuIndex) => (
                             <li
                                 key={`menu-${menuIndex}`}
-                                className="border-b border-gray-700">
+                                className="border-b border-cyan-950">
                                 <button
                                     onClick={() =>
                                         menu.action
                                             ? menu.action()
                                             : toggleMenu(menu.name)
                                     }
-                                    className="flex w-full justify-between px-4 py-2 text-left hover:bg-gray-700">
+                                    className="flex w-full justify-between px-4 py-2 text-left hover:bg-cyan-950">
                                     {menu.name}
                                     {menu.subMenus.length > 0 && (
                                         <span>
@@ -97,7 +97,7 @@ export default function Menu() {
                                                         key={`subMenu-${menuIndex}-${subIndex}`}>
                                                         <Link
                                                             href={subMenu.route}
-                                                            className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">
+                                                            className="block px-4 py-2 text-sm text-gray-300 hover:bg-cyan-950">
                                                             {subMenu.name}
                                                         </Link>
                                                     </li>
@@ -113,7 +113,7 @@ export default function Menu() {
                 <main className="flex-1 ml-64 p-4">
                     {/* Este div es para el color fondo de las tarjetas */}
                     <div className="flex-1 p-6 bg-gray-100">
-                        {/*  <div className="flex flex-wrap justify-center m-1">
+                        <div className="flex flex-wrap justify-center m-1">
                             <div className="w-1/5 p-1">
                                 <MiCard
                                     description="Descripción de la tarjeta"
@@ -164,7 +164,7 @@ export default function Menu() {
                                     }
                                 />
                             </div>
-</div>*/}
+                        </div>
                     </div>
                 </main>
             </div>

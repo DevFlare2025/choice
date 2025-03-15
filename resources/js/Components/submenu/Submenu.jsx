@@ -3,7 +3,7 @@ const SubMenu = ({ subMenus, isActive }) => {
         isActive && (
             <ul className="ml-4 space-y-2 bg-gray-700">
                 {subMenus.map((subMenu) => (
-                    <li key={subMenu} className="px-4 py-2 hover:bg-gray-600">
+                    <li key={subMenu} className="px-4 py-2 text-white ">
                         {subMenu}
                     </li>
                 ))}

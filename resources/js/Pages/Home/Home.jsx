@@ -1,8 +1,9 @@
 export default function Home() {
     return (
-        <>
-            <h1>hol</h1>
-            <h1>hola</h1>
-        </>
+        <section className=" w-full h-full">
+            <div>
+                <h1 className="bg-red-400 "> Es una prueba para </h1>
+            </div>
+        </section>
     )
 }
